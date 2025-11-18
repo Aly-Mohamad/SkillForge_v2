@@ -1,0 +1,99 @@
+{
+  "students": [
+    {
+      "enrolledCourses": [
+        "C2182",
+        "C8082"
+      ],
+      "userId": "S4639",
+      "role": "student",
+      "username": "ahmed",
+      "email": "ahmed@gmail.com",
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+    },
+    {
+      "enrolledCourses": [],
+      "userId": "S4412",
+      "role": "student",
+      "username": "mohab",
+      "email": "mohab@gmail.com",
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+    },
+    {
+      "enrolledCourses": [
+        "C8082",
+        "C8078"
+      ],
+      "userId": "S6869",
+      "role": "student",
+      "username": "ahmed",
+      "email": "ahmed1@gmail.com",
+      "password": "c70f9ab3421f9ce3fbb214fd2532619650b942c8fc744b025529c4ee349651cd"
+    },
+    {
+      "enrolledCourses": [
+        "C8078",
+        "C3354",
+        "C2182",
+        "C4904",
+        "C8082",
+        "C0681"
+      ],
+      "userId": "S0138",
+      "role": "student",
+      "username": "youssef88",
+      "email": "youssef1@gmail.com",
+      "password": "bfa3d224aa3263490dad0f945f4ea741fc002265fc4d45d0d5c2a4e6ca88dfe3"
+    },
+    {
+      "enrolledCourses": [
+        "C8078",
+        "C4904",
+        "C3354",
+        "C2489"
+      ],
+      "userId": "S5904",
+      "role": "student",
+      "username": "dod",
+      "email": "dod@gmail.com",
+      "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5"
+    }
+  ],
+  "instructors": [
+    {
+      "createdCourses": [
+        "C2182",
+        "C8082"
+      ],
+      "userId": "I7825",
+      "role": "instructor",
+      "username": "aly",
+      "email": "aly@gmail.com",
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+    },
+    {
+      "createdCourses": [
+        "C8078",
+        "C2845"
+      ],
+      "userId": "I9592",
+      "role": "instructor",
+      "username": "youssef",
+      "email": "youssef@gmail.com",
+      "password": "038352ad5eedb708d205c2fc0d4891fd98a232e22e4e8fc66ffb1471a992dee5"
+    },
+    {
+      "createdCourses": [
+        "C3354",
+        "C2489",
+        "C4904",
+        "C0681"
+      ],
+      "userId": "I6798",
+      "role": "instructor",
+      "username": "hoda",
+      "email": "hoda@gmail.com",
+      "password": "32955acf13dea6d995e070bb486e796addf37fb28cba9985d5e7b4bf9c0dc8bc"
+    }
+  ]
+}
