@@ -9,14 +9,17 @@ public class AuthManager {
 
     public boolean signupStudent(String username, String email, String password) {
         String hash = HashUtil.sha256(password);
-        Student s = new Student(username, email, hash);
-        return db.addUser(s);
+        return db.addUser(new Student(username, email, hash));
     }
 
     public boolean signupInstructor(String username, String email, String password) {
         String hash = HashUtil.sha256(password);
-        Instructor i = new Instructor(username, email, hash);
-        return db.addUser(i);
+        return db.addUser(new Instructor(username, email, hash));
+    }
+
+    public boolean signupAdmin(String username, String email, String password) {
+        String hash = HashUtil.sha256(password);
+        return db.addUser(new Admin(username, email, hash));
     }
 
     public Optional<User> login(String email, String password) {

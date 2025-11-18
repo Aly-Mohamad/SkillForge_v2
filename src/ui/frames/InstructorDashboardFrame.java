@@ -94,7 +94,7 @@ public class InstructorDashboardFrame extends JFrame {
                 Course c = new Course(title, desc, instructor.getUserId());
                 db.addCourse(c);
                 instructor.addCourse(c.getCourseId());
-                db.save();
+                db.save(); //hms7ha
                 model.addElement(c);
             }
         });

@@ -13,7 +13,7 @@ public class Course {
     private String instructorId;
     private List<model.Lesson> lessons;
     private List<String> students;
-
+    private String approvalStatus;
     private Map<String, List<String>> progress;
 
     public Course(String title, String description, String instructorId) {
@@ -24,6 +24,7 @@ public class Course {
         this.lessons = new ArrayList<>();
         this.students = new ArrayList<>();
         this.progress = new HashMap<>();
+        this.approvalStatus = "PENDING";
     }
 
     public String getCourseId() { return courseId; }
@@ -44,6 +45,10 @@ public class Course {
     public Map<String, List<String>> getProgress() {
         if (progress == null) progress = new HashMap<>();
         return progress;
+    }
+
+    public String getApprovalStatus() {
+        return approvalStatus;
     }
 
     public void setTitle(String title) { this.title = title; }

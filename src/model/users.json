@@ -57,13 +57,22 @@
       "username": "dod",
       "email": "dod@gmail.com",
       "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5"
+    },
+    {
+      "enrolledCourses": [],
+      "userId": "S2658",
+      "role": "student",
+      "username": "dfhjs",
+      "email": "123@gmail.com",
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
     }
   ],
   "instructors": [
     {
       "createdCourses": [
         "C2182",
-        "C8082"
+        "C8082",
+        "C4533"
       ],
       "userId": "I7825",
       "role": "instructor",
@@ -94,6 +103,22 @@
       "username": "hoda",
       "email": "hoda@gmail.com",
       "password": "32955acf13dea6d995e070bb486e796addf37fb28cba9985d5e7b4bf9c0dc8bc"
+    }
+  ],
+  "admins": [
+    {
+      "userId": "A4879",
+      "role": "admin",
+      "username": "admin",
+      "email": "admin@gmail.com",
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+    },
+    {
+      "userId": "A5373",
+      "role": "admin",
+      "username": "admin2",
+      "email": "admin2@gmail.com",
+      "password": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"
     }
   ]
 }

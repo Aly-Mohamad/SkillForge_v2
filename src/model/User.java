@@ -2,7 +2,7 @@ package model;
 
 public abstract class User {
     protected String userId;
-    protected String role; // "student" or "instructor"
+    protected String role;
     protected String username;
     protected String email;
     protected String password;
@@ -23,16 +23,14 @@ public abstract class User {
     public String getEmail() { return email; }
     public String getPassword() { return password; }
 
-    public void setUsername(String username) { this.username = username; }
-    public void setEmail(String email) { this.email = email; }
-    public void setPassword(String password) { this.password = password; }
-
     private String generateuserid(String role) {
         int number = (int)(Math.random() * 10000);
         if (role.equalsIgnoreCase("Instructor")) {
             return String.format("I%04d", number);
         }
-        else return String.format("S%04d", number);
+        else if (role.equalsIgnoreCase("Student")) {
+            return String.format("S%04d", number);
+        }
+        else return String.format("A%04d", number);
     }
-
 }
