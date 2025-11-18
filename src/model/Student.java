@@ -7,8 +7,8 @@ public class Student extends model.User {
 
     private List<String> enrolledCourses = new ArrayList<>();
 
-    public Student(String username, String email, String passwordHash) {
-        super("student", username, email, passwordHash);
+    public Student(String username, String email, String password) {
+        super("student", username, email, password);
     }
 
 

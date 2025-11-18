@@ -33,6 +33,7 @@ public class JsonDatabaseManager {
                 if (wrapper!=null) {
                     if (wrapper.students!=null) users.addAll(wrapper.students);
                     if (wrapper.instructors!=null) users.addAll(wrapper.instructors);
+                    if (wrapper.admins!=null) users.addAll(wrapper.admins);
                 }
             }
         } catch (Exception e) { System.out.println("Could not load users.json: " + e.getMessage()); }
@@ -53,13 +54,16 @@ public class JsonDatabaseManager {
         try {
             List<Student> students = new ArrayList<Student>();
             List<Instructor> instructors = new ArrayList<Instructor>();
+            List<Admin> admins = new ArrayList<Admin>();
             for (User u : users) {
                 if (u instanceof Student) students.add((Student)u);
                 else if (u instanceof Instructor) instructors.add((Instructor)u);
+                else if (u instanceof Admin) admins.add((Admin)u);
             }
             UserWrapper wrapper = new UserWrapper();
             wrapper.students = students;
             wrapper.instructors = instructors;
+            wrapper.admins = admins;
 
             FileWriter fw = new FileWriter(USERS_FILE);
             gson.toJson(wrapper, fw);
@@ -71,7 +75,7 @@ public class JsonDatabaseManager {
         } catch (Exception e) { System.out.println("Save failed: " + e.getMessage()); }
     }
 
-    public  boolean addUser(User u) {
+    public boolean addUser(User u) {
         for (User x : users) {
             if (x.getEmail().equalsIgnoreCase(u.getEmail())) return false;
         }
@@ -80,30 +84,30 @@ public class JsonDatabaseManager {
         return true;
     }
 
-    public  Optional<User> findByEmail(String email) {
+    public Optional<User> findByEmail(String email) {
         for (User u : users) {
             if (u.getEmail().equalsIgnoreCase(email)) return Optional.of(u);
         }
         return Optional.empty();
     }
 
-    public  Optional<User> findById(String id) {
+    public Optional<User> findById(String id) {
         for (User u : users) {
             if (u.getUserId().equals(id)) return Optional.of(u);
         }
         return Optional.empty();
     }
 
-    public  void addCourse(Course c) {
+    public void addCourse(Course c) {
         courses.add(c);
         save();
     }
 
-    public  List<Course> getAllCourses() {
+    public List<Course> getAllCourses() {
         return courses;
     }
 
-    public  Optional<Course> getCourseById(String id) {
+    public Optional<Course> getCourseById(String id) {
         for (Course c : courses) {
             if (c.getCourseId().equals(id)) return Optional.of(c);
         }
@@ -118,5 +122,6 @@ public class JsonDatabaseManager {
     static class UserWrapper {
         public List<Student> students;
         public List<Instructor> instructors;
+        public List<Admin> admins;
     }
 }

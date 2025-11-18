@@ -31,7 +31,8 @@ public class StudentDashboardFrame extends JFrame {
 
         for (Course c : db.getAllCourses()) {
             if (student.getCourses().contains(c.getCourseId())) enrolledModel.addElement(c);
-            else availableModel.addElement(c);
+            else if (c.getApprovalStatus().equals("APPROVED")) availableModel.addElement(c);
+            //else availableModel.addElement(c);
         }
 
         JList<Course> enrolledList = new JList<>(enrolledModel);

@@ -6,10 +6,8 @@ import java.util.List;
 public class Instructor extends User {
     private List<String> createdCourses = new ArrayList<String>();
 
-    public Instructor() { super(); this.role = "instructor"; }
-
-    public Instructor(String username, String email, String passwordHash) {
-        super("instructor", username, email, passwordHash);
+    public Instructor(String username, String email, String password) {
+        super("instructor", username, email, password);
     }
 
     public List<String> getCreatedCourses() { return createdCourses; }
