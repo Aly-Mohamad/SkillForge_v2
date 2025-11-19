@@ -30,9 +30,11 @@ public class StudentDashboardFrame extends JFrame {
         DefaultListModel<Course> availableModel = new DefaultListModel<>();
 
         for (Course c : db.getAllCourses()) {
-            if (student.getCourses().contains(c.getCourseId())) enrolledModel.addElement(c);
-            else if (c.getApprovalStatus().equals("APPROVED")) availableModel.addElement(c);
-            //else availableModel.addElement(c);
+            if (student.isEnrolled(c)) {
+                enrolledModel.addElement(c);
+            } else if ("APPROVED".equals(c.getApprovalStatus())) {
+                availableModel.addElement(c);
+            }
         }
 
         JList<Course> enrolledList = new JList<>(enrolledModel);
@@ -67,9 +69,12 @@ public class StudentDashboardFrame extends JFrame {
         // ---------------- BUTTON ACTIONS -----------------
         btnEnroll.addActionListener(e -> {
             Course selected = availableList.getSelectedValue();
-            if (selected == null) { JOptionPane.showMessageDialog(this, "Select a course to enroll."); return; }
-            selected.enrollStudent(student.getUserId());
-            student.enroll(selected.getCourseId());
+            if (selected == null) {
+                JOptionPane.showMessageDialog(this, "Select a course to enroll.");
+                return;
+            }
+            selected.enrollStudent(student);
+            student.enroll(selected);
             db.updateCourse(selected);
             availableModel.removeElement(selected);
             enrolledModel.addElement(selected);
@@ -78,14 +83,20 @@ public class StudentDashboardFrame extends JFrame {
 
         btnView.addActionListener(e -> {
             Course selected = enrolledList.getSelectedValue();
-            if (selected == null) { JOptionPane.showMessageDialog(this, "Select an enrolled course to view lessons."); return; }
+            if (selected == null) {
+                JOptionPane.showMessageDialog(this, "Select an enrolled course to view lessons.");
+                return;
+            }
             new LessonListDialog(this, db, student, selected).setVisible(true);
             enrolledList.repaint(); // refresh progress
         });
 
         btnLogout.addActionListener(e -> {
             int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to logout?", "Logout", JOptionPane.YES_NO_OPTION);
-            if (confirm == JOptionPane.YES_OPTION) { this.dispose(); new LoginFrame(db).setVisible(true); }
+            if (confirm == JOptionPane.YES_OPTION) {
+                this.dispose();
+                new LoginFrame(db).setVisible(true);
+            }
         });
     }
 
@@ -93,15 +104,17 @@ public class StudentDashboardFrame extends JFrame {
         return (list, course, index, isSelected, cellHasFocus) -> {
             String text;
             if (showProgress) {
-                text = "📘 " + course.getTitle() + " — " + course.getCompletionPercentage(student.getUserId()) + "% completed";
-            } else text = "📘 " + course.getTitle() + " — " + course.getDescription();
+                text = "📘 " + course.getTitle() + " — " + course.getCompletionPercentage(student) + "% completed";
+            } else {
+                text = "📘 " + course.getTitle() + " — " + course.getDescription();
+            }
 
             JLabel lbl = new JLabel(text);
             lbl.setOpaque(true);
             lbl.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
-            lbl.setFont(new java.awt.Font("SansSerif", Font.PLAIN, 13));
-            lbl.setBackground(isSelected ? new java.awt.Color(220, 240, 255) : Color.WHITE);
-            lbl.setForeground(isSelected ? Color.BLACK : new java.awt.Color(50, 50, 50));
+            lbl.setFont(new Font("SansSerif", Font.PLAIN, 13));
+            lbl.setBackground(isSelected ? new Color(220, 240, 255) : Color.WHITE);
+            lbl.setForeground(isSelected ? Color.BLACK : new Color(50, 50, 50));
             return lbl;
         };
     }

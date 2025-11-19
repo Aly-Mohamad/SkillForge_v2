@@ -23,7 +23,7 @@ public class LessonListDialog extends JDialog {
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         // Custom renderer: title + description + completion
-        list.setCellRenderer(new javax.swing.ListCellRenderer<Lesson>() {
+        list.setCellRenderer(new ListCellRenderer<Lesson>() {
             @Override
             public Component getListCellRendererComponent(JList<? extends Lesson> jList, Lesson lesson, int index, boolean isSelected, boolean cellHasFocus) {
                 JPanel panel = new JPanel(new BorderLayout());
@@ -31,14 +31,12 @@ public class LessonListDialog extends JDialog {
                 panel.setOpaque(true);
                 panel.setBackground(isSelected ? new Color(220, 240, 255) : Color.WHITE);
 
-                // Title with completion indicator
-                boolean completed = course.isLessonCompleted(student.getUserId(), lesson.getLessonId());
+                boolean completed = course.isLessonCompleted(student, lesson.getLessonId());
                 String titleText = lesson.getTitle() + (completed ? " ✅" : "");
                 JLabel titleLabel = new JLabel(titleText);
                 titleLabel.setFont(new Font("SansSerif", Font.BOLD, 14));
                 titleLabel.setForeground(isSelected ? Color.BLACK : new Color(50, 50, 50));
 
-                // Description in smaller, lighter font
                 JLabel descLabel = new JLabel("<html><i>" + lesson.getContent() + "</i></html>");
                 descLabel.setFont(new Font("SansSerif", Font.PLAIN, 12));
                 descLabel.setForeground(isSelected ? Color.BLACK : Color.GRAY);
@@ -70,8 +68,8 @@ public class LessonListDialog extends JDialog {
                     return;
                 }
 
-                if (!course.isLessonCompleted(student.getUserId(), selected.getLessonId())) {
-                    course.markLessonCompleted(student.getUserId(), selected.getLessonId());
+                if (!course.isLessonCompleted(student, selected.getLessonId())) {
+                    course.markLessonCompleted(student, selected.getLessonId());
                     db.updateCourse(course);
                     db.save();
                     list.repaint();

@@ -3,34 +3,37 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student extends model.User {
+public class Student extends User {
 
-    private List<String> enrolledCourses = new ArrayList<>();
+    private List<Course> enrolledCourses = new ArrayList<>();
 
     public Student(String username, String email, String password) {
         super("student", username, email, password);
     }
 
-
-    public List<String> getCourses() {
+    public List<Course> getCourses() {
         return enrolledCourses;
     }
 
-    public void enroll(String courseId) {
-        if (!enrolledCourses.contains(courseId)) {
-            enrolledCourses.add(courseId);
+    public void enroll(Course course) {
+        if (!enrolledCourses.contains(course)) {
+            enrolledCourses.add(course);
         }
     }
 
-    public void unenroll(String courseId) {
-        enrolledCourses.remove(courseId);
+    public void unenroll(Course course) {
+        enrolledCourses.remove(course);
+    }
+
+    public boolean isEnrolled(Course course) {
+        return enrolledCourses.contains(course);
     }
 
     public boolean isEnrolled(String courseId) {
-        return enrolledCourses.contains(courseId);
+        return enrolledCourses.stream().anyMatch(c -> c.getCourseId().equals(courseId));
     }
 
-    public void setEnrolledCourses(List<String> courses) {
+    public void setEnrolledCourses(List<Course> courses) {
         this.enrolledCourses = new ArrayList<>(courses);
     }
 }

@@ -19,7 +19,7 @@ public class JsonDatabaseManager {
     private List<User> users = new ArrayList<User>();
     private List<Course> courses = new ArrayList<Course>();
 
-    private Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public JsonDatabaseManager() { load(); }
 
@@ -36,7 +36,9 @@ public class JsonDatabaseManager {
                     if (wrapper.admins!=null) users.addAll(wrapper.admins);
                 }
             }
-        } catch (Exception e) { System.out.println("Could not load users.json: " + e.getMessage()); }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Could not load users.json: " + e.getMessage()); }
 
         try {
             File c = new File(COURSES_FILE);

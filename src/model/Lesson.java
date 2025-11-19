@@ -9,11 +9,17 @@ public class Lesson {
     private String title;
     private String content;
     private List<String> resources = new ArrayList<>();
+    private boolean isCompleted = false;
+    private boolean isPassed = false;
+    private int score = 0;
+    private int tries = 0;
+    private Quiz quiz;
 
+    //Will be removed
     public Lesson(String title, String content) {
-        this.lessonId = generateLessonId();
         this.title = title;
         this.content = content;
+
     }
 
     public String getLessonId() { return lessonId; }

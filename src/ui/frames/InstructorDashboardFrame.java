@@ -4,7 +4,6 @@ import model.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.List;
 
 public class InstructorDashboardFrame extends JFrame {
     private JsonDatabaseManager db;
@@ -94,7 +93,7 @@ public class InstructorDashboardFrame extends JFrame {
                 Course c = new Course(title, desc, instructor.getUserId());
                 db.addCourse(c);
                 instructor.addCourse(c.getCourseId());
-                db.save(); //hms7ha
+                db.save();
                 model.addElement(c);
             }
         });
@@ -115,8 +114,8 @@ public class InstructorDashboardFrame extends JFrame {
                 return;
             }
             StringBuilder sb = new StringBuilder();
-            for (String sid : c.getStudents()) {
-                db.findById(sid).ifPresent(u -> sb.append(u.getUsername()).append(" (").append(u.getEmail()).append(")\n"));
+            for (Student s : c.getStudents()) {
+                sb.append(s.getUsername()).append(" (").append(s.getEmail()).append(")\n");
             }
             if (sb.length() == 0) sb.append("No enrolled students yet.");
             JOptionPane.showMessageDialog(this, sb.toString(), "Enrolled students", JOptionPane.INFORMATION_MESSAGE);
