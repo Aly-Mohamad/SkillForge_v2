@@ -5,35 +5,31 @@ import java.util.List;
 
 public class Student extends User {
 
-    private List<Course> enrolledCourses = new ArrayList<>();
+    private List<String> enrolledCourseIds = new ArrayList<>();
 
     public Student(String username, String email, String password) {
         super("student", username, email, password);
     }
 
-    public List<Course> getCourses() {
-        return enrolledCourses;
+    public List<String> getCourseIds() {
+        return enrolledCourseIds;
     }
 
-    public void enroll(Course course) {
-        if (!enrolledCourses.contains(course)) {
-            enrolledCourses.add(course);
+    public void enroll(String courseId) {
+        if (!enrolledCourseIds.contains(courseId)) {
+            enrolledCourseIds.add(courseId);
         }
     }
 
-    public void unenroll(Course course) {
-        enrolledCourses.remove(course);
-    }
-
-    public boolean isEnrolled(Course course) {
-        return enrolledCourses.contains(course);
+    public void unenroll(String courseId) {
+        enrolledCourseIds.remove(courseId);
     }
 
     public boolean isEnrolled(String courseId) {
-        return enrolledCourses.stream().anyMatch(c -> c.getCourseId().equals(courseId));
+        return enrolledCourseIds.contains(courseId);
     }
 
-    public void setEnrolledCourses(List<Course> courses) {
-        this.enrolledCourses = new ArrayList<>(courses);
+    public void setEnrolledCourseIds(List<String> courseIds) {
+        this.enrolledCourseIds = new ArrayList<>(courseIds);
     }
 }

@@ -30,7 +30,7 @@ public class StudentDashboardFrame extends JFrame {
         DefaultListModel<Course> availableModel = new DefaultListModel<>();
 
         for (Course c : db.getAllCourses()) {
-            if (student.isEnrolled(c)) {
+            if (student.isEnrolled(c.getCourseId())) {
                 enrolledModel.addElement(c);
             } else if ("APPROVED".equals(c.getApprovalStatus())) {
                 availableModel.addElement(c);
@@ -74,7 +74,7 @@ public class StudentDashboardFrame extends JFrame {
                 return;
             }
             selected.enrollStudent(student);
-            student.enroll(selected);
+            student.enroll(selected.getCourseId());
             db.updateCourse(selected);
             availableModel.removeElement(selected);
             enrolledModel.addElement(selected);

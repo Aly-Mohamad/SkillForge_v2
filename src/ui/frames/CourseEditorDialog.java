@@ -3,7 +3,6 @@ package ui.frames;
 import model.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class CourseEditorDialog extends JDialog {
 
@@ -41,12 +40,27 @@ public class CourseEditorDialog extends JDialog {
         add(buttons, BorderLayout.SOUTH);
 
         addLesson.addActionListener(e -> {
-            Lesson newLesson = new Lesson("New Lesson", "");
-            course.addLesson(newLesson);
-            lessonPanel.add(createLessonRow(newLesson, course, db, lessonPanel));
-            lessonPanel.revalidate();
-            lessonPanel.repaint();
-            db.save();
+            LessonInfoDialog infoDialog = new LessonInfoDialog(owner);
+            infoDialog.setVisible(true);
+
+            if (infoDialog.isConfirmed()) {
+                QuestionEditorDialog questionDialog = new QuestionEditorDialog(owner);
+                questionDialog.setVisible(true);
+
+                if (questionDialog.isConfirmed()) {
+                    Lesson newLesson = new Lesson(infoDialog.getLessonTitle(), infoDialog.getLessonContent());
+                    Quiz quiz = new Quiz(newLesson.getLessonId());
+                    Question[] questions = questionDialog.getQuestions().toArray(new Question[0]);
+                    for (Question q : questions) {
+                        quiz.addQuestion(q);
+                    }
+                    course.addLesson(newLesson);
+                    lessonPanel.add(createLessonRow(newLesson, course, db, lessonPanel));
+                    lessonPanel.revalidate();
+                    lessonPanel.repaint();
+                    db.save();
+                }
+            }
         });
 
         save.addActionListener(e -> {

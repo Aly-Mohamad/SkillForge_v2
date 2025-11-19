@@ -10,12 +10,22 @@ public class Quiz {
     private String lessonId;
     private ArrayList<Question> questions;
 
-    public Quiz(String quizId, boolean isPassed, int tries, int score, String lessonId) {
-        this.quizId = quizId;
-        this.isPassed = isPassed;
-        this.tries = tries;
-        this.score = score;
+    public Quiz(String lessonId) {
         this.lessonId = lessonId;
-        this.questions = new ArrayList<>();
+        this.isPassed = false;
+        this.tries = 0;
+    }
+
+    public void setQuestions(ArrayList<Question> questions) {
+        this.questions = questions;
+    }
+
+    public ArrayList<Question> getQuestions() {
+        return this.questions;
+    }
+
+    public void addQuestion(Question question){
+        if(questions == null) questions = new ArrayList<>();
+        questions.add(question);
     }
 }

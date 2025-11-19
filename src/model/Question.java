@@ -1,8 +1,10 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Question {
     private String questionId;
-    private String []answers;
+    private String []answers = new String[4];
     private String correctAnswer;
     private String questionText;
     private String courseId;

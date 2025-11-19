@@ -29,7 +29,7 @@ public class InstructorDashboardFrame extends JFrame {
         list.setFixedCellHeight(40);
         list.setCellRenderer(new ListCellRenderer<Course>() {
             public Component getListCellRendererComponent(JList<? extends Course> l, Course value, int index, boolean isSelected, boolean cellHasFocus) {
-                int studentCount = value.getStudents().size();
+                int studentCount = value.getStudentIds().size();
                 String display = "📘 " + value.getTitle() + "  —  👥 " + studentCount + " enrolled";
                 JLabel label = new JLabel(display);
                 label.setFont(new Font("SansSerif", Font.PLAIN, 14));
@@ -114,8 +114,12 @@ public class InstructorDashboardFrame extends JFrame {
                 return;
             }
             StringBuilder sb = new StringBuilder();
-            for (Student s : c.getStudents()) {
-                sb.append(s.getUsername()).append(" (").append(s.getEmail()).append(")\n");
+            for (String studentId : c.getStudentIds()) {
+                db.findById(studentId).ifPresent(user -> {
+                    if (user instanceof Student s) {
+                        sb.append(s.getUsername()).append(" (").append(s.getEmail()).append(")\n");
+                    }
+                });
             }
             if (sb.length() == 0) sb.append("No enrolled students yet.");
             JOptionPane.showMessageDialog(this, sb.toString(), "Enrolled students", JOptionPane.INFORMATION_MESSAGE);

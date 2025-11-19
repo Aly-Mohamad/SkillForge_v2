@@ -36,4 +36,6 @@ public class Lesson {
         int number = (int)(Math.random() * 10000);
         return String.format("L%04d", number);
     }
+
+    private void setQuiz(Quiz quiz) { this.quiz = quiz; }
 }

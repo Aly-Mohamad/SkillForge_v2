@@ -1,12 +1,46 @@
 [
   {
-    "courseId": "C7001",
-    "title": "Python OOP",
-    "description": "OOP concepts",
-    "instructorId": "I9889",
-    "lessons": [],
-    "students": [],
-    "approvalStatus": "PENDING",
+    "courseId": "C4131",
+    "title": "Python",
+    "description": "",
+    "instructorId": "I5967",
+    "lessons": [
+      {
+        "title": "New Lesson",
+        "content": "",
+        "resources": [],
+        "isCompleted": false,
+        "isPassed": false,
+        "score": 0,
+        "tries": 0
+      }
+    ],
+    "studentIds": [
+      "student"
+    ],
+    "approvalStatus": "APPROVED",
+    "progress": {}
+  },
+  {
+    "courseId": "C6141",
+    "title": "math 2",
+    "description": "",
+    "instructorId": "I5967",
+    "lessons": [
+      {
+        "title": "dkdkdd",
+        "content": "ddd",
+        "resources": [],
+        "isCompleted": false,
+        "isPassed": false,
+        "score": 0,
+        "tries": 0
+      }
+    ],
+    "studentIds": [
+      "student"
+    ],
+    "approvalStatus": "APPROVED",
     "progress": {}
   }
 ]

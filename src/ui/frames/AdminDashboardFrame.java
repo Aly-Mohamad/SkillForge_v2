@@ -19,6 +19,7 @@ public class AdminDashboardFrame extends JFrame {
         setLocationRelativeTo(null);
         init();
     }
+
     private void init() {
         JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -29,7 +30,7 @@ public class AdminDashboardFrame extends JFrame {
         list.setFixedCellHeight(40);
         list.setCellRenderer(new ListCellRenderer<Course>() {
             public Component getListCellRendererComponent(JList<? extends Course> l, Course value, int index, boolean isSelected, boolean cellHasFocus) {
-                int studentCount = value.getStudents().size();
+                int studentCount = value.getStudentIds().size();
                 String display = "📘 " + value.getTitle() + "  —  👥 " + studentCount + " enrolled";
                 JLabel label = new JLabel(display);
                 label.setFont(new Font("SansSerif", Font.PLAIN, 14));
@@ -42,7 +43,7 @@ public class AdminDashboardFrame extends JFrame {
         });
 
         for (Course c : db.getAllCourses()) {
-            if (c.getApprovalStatus().equals("PENDING")) {
+            if ("PENDING".equals(c.getApprovalStatus())) {
                 model.addElement(c);
             }
         }

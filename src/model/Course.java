@@ -12,7 +12,7 @@ public class Course {
     private String description;
     private String instructorId;
     private List<Lesson> lessons;
-    private List<Student> students;
+    private List<String> studentIds; // Store student IDs instead of full objects
     private String approvalStatus;
     private Map<String, List<String>> progress;
 
@@ -22,7 +22,7 @@ public class Course {
         this.description = description;
         this.instructorId = instructorId;
         this.lessons = new ArrayList<>();
-        this.students = new ArrayList<>();
+        this.studentIds = new ArrayList<>();
         this.progress = new HashMap<>();
         this.approvalStatus = "PENDING";
     }
@@ -37,9 +37,9 @@ public class Course {
         return lessons;
     }
 
-    public List<Student> getStudents() {
-        if (students == null) students = new ArrayList<>();
-        return students;
+    public List<String> getStudentIds() {
+        if (studentIds == null) studentIds = new ArrayList<>();
+        return studentIds;
     }
 
     public Map<String, List<String>> getProgress() {
@@ -54,7 +54,7 @@ public class Course {
     public void setTitle(String title) { this.title = title; }
     public void setDescription(String description) { this.description = description; }
     public void setLessons(List<Lesson> lessons) { this.lessons = (lessons != null) ? lessons : new ArrayList<>(); }
-    public void setStudents(List<Student> students) { this.students = (students != null) ? students : new ArrayList<>(); }
+    public void setStudentIds(List<String> studentIds) { this.studentIds = (studentIds != null) ? studentIds : new ArrayList<>(); }
     public void setProgress(Map<String, List<String>> progress) { this.progress = (progress != null) ? progress : new HashMap<>(); }
 
     public void addLesson(Lesson lesson) {
@@ -66,13 +66,14 @@ public class Course {
     }
 
     public void enrollStudent(Student student) {
-        if (student != null && !getStudents().contains(student)) {
-            getStudents().add(student);
+        String studentId = student.getUsername(); // or getEmail()
+        if (studentId != null && !getStudentIds().contains(studentId)) {
+            getStudentIds().add(studentId);
         }
     }
 
     public void markLessonCompleted(Student student, String lessonId) {
-        String studentId = student.getUsername(); // or getEmail(), depending on your unique key
+        String studentId = student.getUsername();
         getProgress().putIfAbsent(studentId, new ArrayList<>());
         List<String> completed = getProgress().get(studentId);
         if (!completed.contains(lessonId)) completed.add(lessonId);
