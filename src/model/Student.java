@@ -26,6 +26,7 @@ public class Student extends User {
     }
 
     public boolean isEnrolled(String courseId) {
+        if(enrolledCourseIds.contains(courseId)) return false;
         return enrolledCourseIds.contains(courseId);
     }
 

@@ -10,6 +10,14 @@
       "username": "student",
       "email": "student@gmail.com",
       "password": "264c8c381bf16c982a4e59b0dd4c6f7808c51a05f64c35db42cc78a2a72875bb"
+    },
+    {
+      "enrolledCourseIds": [],
+      "userId": "S9300",
+      "role": "student",
+      "username": "loay",
+      "email": "loay@gmail.com",
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
     }
   ],
   "instructors": [
@@ -43,7 +51,12 @@
         "C3534",
         "C1687",
         "C1479",
-        "C7527"
+        "C7527",
+        "C0769",
+        "C3776",
+        "C7935",
+        "C9538",
+        "C0841"
       ],
       "userId": "I7723",
       "role": "instructor",
