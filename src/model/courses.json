@@ -42,5 +42,35 @@
     ],
     "approvalStatus": "APPROVED",
     "progress": {}
+  },
+  {
+    "courseId": "C3819",
+    "title": "wwwww",
+    "description": "wwwww",
+    "instructorId": "I7723",
+    "lessons": [],
+    "studentIds": [],
+    "approvalStatus": "APPROVED",
+    "progress": {}
+  },
+  {
+    "courseId": "C9121",
+    "title": "eeeee",
+    "description": "eeeee",
+    "instructorId": "I7723",
+    "lessons": [],
+    "studentIds": [],
+    "approvalStatus": "APPROVED",
+    "progress": {}
+  },
+  {
+    "courseId": "C1687",
+    "title": "qqqqqq",
+    "description": "qqqqq",
+    "instructorId": "I7723",
+    "lessons": [],
+    "studentIds": [],
+    "approvalStatus": "APPROVED",
+    "progress": {}
   }
 ]

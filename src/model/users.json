@@ -31,6 +31,25 @@
       "username": "instructor2",
       "email": "instructor2@gmail.com",
       "password": "3f06cf23344743b8263e73669b642bb91a016afad4e1fd0386b4e58579c38c4d"
+    },
+    {
+      "createdCourses": [
+        "C3370",
+        "C6895",
+        "C2936",
+        "C3819",
+        "C9121",
+        "C5644",
+        "C3534",
+        "C1687",
+        "C1479",
+        "C7527"
+      ],
+      "userId": "I7723",
+      "role": "instructor",
+      "username": "aly",
+      "email": "aly@gmail.com",
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
     }
   ],
   "admins": [
@@ -40,6 +59,13 @@
       "username": "admin",
       "email": "admin@gmail.com",
       "password": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
+    },
+    {
+      "userId": "A7983",
+      "role": "admin",
+      "username": "ahmed",
+      "email": "ahmed@gmail.com",
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
     }
   ]
 }

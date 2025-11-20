@@ -56,6 +56,7 @@ public class Course {
     public void setLessons(List<Lesson> lessons) { this.lessons = (lessons != null) ? lessons : new ArrayList<>(); }
     public void setStudentIds(List<String> studentIds) { this.studentIds = (studentIds != null) ? studentIds : new ArrayList<>(); }
     public void setProgress(Map<String, List<String>> progress) { this.progress = (progress != null) ? progress : new HashMap<>(); }
+    public void setApprovalStatus(String approvalStatus) {this.approvalStatus = approvalStatus;}
 
     public void addLesson(Lesson lesson) {
         if (lesson != null) getLessons().add(lesson);

@@ -126,4 +126,15 @@ public class JsonDatabaseManager {
         public List<Instructor> instructors;
         public List<Admin> admins;
     }
+
+    public void deleteCourse(String courseId) {
+        for (int i = 0; i < courses.size(); i++) {
+            Course c = courses.get(i);
+            if (c.getCourseId().equals(courseId)) {
+                courses.remove(i);
+                save();
+                break;
+            }
+        }
+    }
 }
