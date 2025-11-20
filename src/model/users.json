@@ -5,11 +5,97 @@
         "C4131",
         "C6141"
       ],
+      "lessonProgressMap": {
+        "L4240": {
+          "completed": true,
+          "passed": true,
+          "score": 100,
+          "tries": 7
+        },
+        "L1862": {
+          "completed": true,
+          "passed": true,
+          "score": 100,
+          "tries": 4
+        },
+        "L8210": {
+          "completed": true,
+          "passed": true,
+          "score": 100,
+          "tries": 1
+        },
+        "L7616": {
+          "completed": true,
+          "passed": true,
+          "score": 100,
+          "tries": 2
+        },
+        "L1490": {
+          "completed": true,
+          "passed": true,
+          "score": 100,
+          "tries": 1
+        }
+      },
       "userId": "S1970",
       "role": "student",
       "username": "student",
       "email": "student@gmail.com",
       "password": "264c8c381bf16c982a4e59b0dd4c6f7808c51a05f64c35db42cc78a2a72875bb"
+    },
+    {
+      "enrolledCourseIds": [
+        "C6141"
+      ],
+      "lessonProgressMap": {
+        "L4240": {
+          "completed": true,
+          "passed": true,
+          "score": 100,
+          "tries": 1
+        },
+        "L1862": {
+          "completed": true,
+          "passed": true,
+          "score": 100,
+          "tries": 2
+        },
+        "L8210": {
+          "completed": true,
+          "passed": true,
+          "score": 100,
+          "tries": 2
+        },
+        "L7616": {
+          "completed": true,
+          "passed": true,
+          "score": 100,
+          "tries": 2
+        },
+        "L2479": {
+          "completed": true,
+          "passed": true,
+          "score": 100,
+          "tries": 1
+        },
+        "L1490": {
+          "completed": true,
+          "passed": true,
+          "score": 100,
+          "tries": 3
+        },
+        "L9103": {
+          "completed": true,
+          "passed": true,
+          "score": 100,
+          "tries": 2
+        }
+      },
+      "userId": "S8658",
+      "role": "student",
+      "username": "student2",
+      "email": "student2@gmail.com",
+      "password": "eb4b3111401df980f14f28ad6804ae096df1e1c6963c51eab4140be226f8c94c"
     }
   ],
   "instructors": [

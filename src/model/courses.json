@@ -28,19 +28,133 @@
     "instructorId": "I5967",
     "lessons": [
       {
-        "title": "dkdkdd",
-        "content": "ddd",
+        "lessonId": "L1490",
+        "title": "lesson 1",
+        "content": "test 1",
+        "resources": [],
+        "isCompleted": true,
+        "isPassed": true,
+        "score": 100,
+        "tries": 4,
+        "quiz": {
+          "isPassed": true,
+          "tries": 4,
+          "score": 100,
+          "lessonId": "L1490",
+          "questions": [
+            {
+              "questionId": "Q4738",
+              "answers": [
+                "right",
+                "no",
+                "wrong",
+                "not"
+              ],
+              "correctAnswer": "right",
+              "questionText": "q1",
+              "studentAnswer": "right",
+              "isCorrect": false
+            }
+          ]
+        }
+      },
+      {
+        "lessonId": "L9103",
+        "title": "lesson 2",
+        "content": "test 2",
+        "resources": [],
+        "isCompleted": true,
+        "isPassed": true,
+        "score": 100,
+        "tries": 2,
+        "quiz": {
+          "isPassed": true,
+          "tries": 2,
+          "score": 100,
+          "lessonId": "L9103",
+          "questions": [
+            {
+              "questionId": "Q6010",
+              "answers": [
+                "right",
+                "n",
+                "not",
+                "no"
+              ],
+              "correctAnswer": "right",
+              "questionText": "q1",
+              "studentAnswer": "right",
+              "isCorrect": false
+            },
+            {
+              "questionId": "Q2327",
+              "answers": [
+                "wrong",
+                "right",
+                "no",
+                "no"
+              ],
+              "correctAnswer": "right",
+              "questionText": "q2",
+              "studentAnswer": "right",
+              "isCorrect": false
+            }
+          ]
+        }
+      },
+      {
+        "lessonId": "L1576",
+        "title": "lesson 4",
+        "content": "test 4",
         "resources": [],
         "isCompleted": false,
         "isPassed": false,
         "score": 0,
-        "tries": 0
+        "tries": 0,
+        "quiz": {
+          "isPassed": false,
+          "tries": 0,
+          "score": 0,
+          "lessonId": "L1576",
+          "questions": [
+            {
+              "questionId": "Q2346",
+              "answers": [
+                "yes",
+                "ddd",
+                "dd",
+                "d"
+              ],
+              "correctAnswer": "yes",
+              "questionText": "q1",
+              "isCorrect": false
+            }
+          ]
+        }
       }
     ],
     "studentIds": [
-      "student"
+      "student",
+      "student2"
     ],
     "approvalStatus": "APPROVED",
-    "progress": {}
+    "progress": {
+      "student": [
+        "L4240",
+        "L1862",
+        "L8210",
+        "L7616",
+        "L1490"
+      ],
+      "student2": [
+        "L4240",
+        "L1862",
+        "L8210",
+        "L7616",
+        "L2479",
+        "L1490",
+        "L9103"
+      ]
+    }
   }
 ]

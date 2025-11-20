@@ -3,7 +3,6 @@ package ui.frames;
 import model.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class InstructorDashboardFrame extends JFrame {
     private JsonDatabaseManager db;
@@ -113,16 +112,42 @@ public class InstructorDashboardFrame extends JFrame {
                 JOptionPane.showMessageDialog(this, "Select a course");
                 return;
             }
-            StringBuilder sb = new StringBuilder();
-            for (String studentId : c.getStudentIds()) {
-                db.findById(studentId).ifPresent(user -> {
-                    if (user instanceof Student s) {
-                        sb.append(s.getUsername()).append(" (").append(s.getEmail()).append(")\n");
-                    }
-                });
+
+            javax.swing.DefaultListModel<String> modelList = new javax.swing.DefaultListModel<>();
+            java.util.LinkedHashSet<String> ids = new java.util.LinkedHashSet<>();
+            if (c.getStudentIds() != null) ids.addAll(c.getStudentIds());
+
+            for (String idOrUsername : ids) {
+                // Try to resolve by userId first, then by username
+                java.util.Optional<User> opt = db.findById(idOrUsername);
+                if (opt.isEmpty()) {
+                    opt = db.findByUsername(idOrUsername);
+                }
+
+                if (opt.isPresent() && opt.get() instanceof Student s) {
+                    String uname = s.getUsername() != null ? s.getUsername() : "(unknown)";
+                    String email = s.getEmail() != null ? s.getEmail() : "(no email)";
+                    modelList.addElement(uname + " (" + email + ")");
+                } else {
+                    modelList.addElement(idOrUsername + " (email unknown)");
+                }
             }
-            if (sb.length() == 0) sb.append("No enrolled students yet.");
-            JOptionPane.showMessageDialog(this, sb.toString(), "Enrolled students", JOptionPane.INFORMATION_MESSAGE);
+
+            if (modelList.isEmpty()) {
+                modelList.addElement("No enrolled students yet.");
+            }
+
+            javax.swing.JList<String> jList = new javax.swing.JList<>(modelList);
+            jList.setVisibleRowCount(10);
+            javax.swing.JScrollPane scroll = new javax.swing.JScrollPane(jList);
+            scroll.setPreferredSize(new java.awt.Dimension(420, 240));
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    scroll,
+                    "Enrolled students",
+                    JOptionPane.PLAIN_MESSAGE
+            );
         });
 
         logoutButton.addActionListener(e -> {
@@ -138,5 +163,34 @@ public class InstructorDashboardFrame extends JFrame {
                 new LoginFrame(db).setVisible(true);
             }
         });
+    }
+
+    // Add this helper method inside InstructorDashboardFrame (e.g., below init())
+    @SuppressWarnings("unchecked")
+    private java.util.List<Student> loadAllStudents() {
+        // Prefer a direct API if available: db.getAllStudents()
+        try {
+            java.lang.reflect.Method m = db.getClass().getMethod("getAllStudents");
+            Object result = m.invoke(db);
+            if (result instanceof java.util.List) {
+                return (java.util.List<Student>) result;
+            }
+        } catch (Throwable ignore) { }
+
+        // Fallback: try db.getAllUsers() and filter students, if such a method exists
+        try {
+            java.lang.reflect.Method m = db.getClass().getMethod("getAllUsers");
+            Object result = m.invoke(db);
+            java.util.List<Student> out = new java.util.ArrayList<>();
+            if (result instanceof java.util.List<?>) {
+                for (Object u : (java.util.List<?>) result) {
+                    if (u instanceof Student s) out.add(s);
+                }
+            }
+            return out;
+        } catch (Throwable ignore) { }
+
+        // Last resort: empty list, UI will still show stored identifiers
+        return java.util.Collections.emptyList();
     }
 }

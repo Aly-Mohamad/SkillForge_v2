@@ -7,13 +7,13 @@ import java.util.Map;
 
 public class Course {
 
-    private String courseId;
+    private final String courseId;
     private String title;
     private String description;
-    private String instructorId;
+    private final String instructorId;
     private List<Lesson> lessons;
     private List<String> studentIds; // Store student IDs instead of full objects
-    private String approvalStatus;
+    private final String approvalStatus;
     private Map<String, List<String>> progress;
 
     public Course(String title, String description, String instructorId) {
@@ -89,10 +89,26 @@ public class Course {
         return getProgress().getOrDefault(studentId, new ArrayList<>()).size();
     }
 
+    // java
+// Only counts lessons that still exist in the course
     public int getCompletionPercentage(Student student) {
-        int total = getLessons().size();
-        if (total == 0) return 0;
-        return countCompletedLessons(student) * 100 / total;
+        java.util.List<Lesson> lessons = getLessons();
+        int total = (lessons == null) ? 0 : lessons.size();
+        if (total == 0 || student == null) return 0;
+
+        int completed = 0;
+        for (Lesson l : lessons) {
+            String lessonId = l.getLessonId();
+            // Count completion only if this student completes THIS existing lesson
+            if (student.hasCompleted(lessonId)) {
+                completed++;
+            } else if (isLessonCompleted(student, lessonId)) {
+                // Optional fallback if you track per-course per-student progress
+                completed++;
+            }
+        }
+
+        return (int) Math.round((completed * 100.0) / total);
     }
 
     private String generateCourseId() {

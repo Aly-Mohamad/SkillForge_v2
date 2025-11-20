@@ -41,7 +41,7 @@ public class Question {
         isCorrect = studentAnswer.equalsIgnoreCase(correctAnswer);
     }
 
-    public String genereateQuestionId(){
+    private String genereateQuestionId(){
         int number = (int)(Math.random() * 10000);
         return String.format("Q%04d", number);
     }

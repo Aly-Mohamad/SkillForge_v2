@@ -100,6 +100,17 @@ public class JsonDatabaseManager {
         return Optional.empty();
     }
 
+    // Add this method alongside your existing findByEmail/findById methods
+    public Optional<User> findByUsername(String username) {
+        if (username == null) return Optional.empty();
+        for (User u : users) {
+            if (u.getUsername() != null && u.getUsername().equalsIgnoreCase(username)) {
+                return Optional.of(u);
+            }
+        }
+        return Optional.empty();
+    }
+
     public void addCourse(Course c) {
         courses.add(c);
         save();
