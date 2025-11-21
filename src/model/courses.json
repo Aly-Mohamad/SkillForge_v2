@@ -28,133 +28,69 @@
     "instructorId": "I5967",
     "lessons": [
       {
-        "lessonId": "L1490",
-        "title": "lesson 1",
-        "content": "test 1",
-        "resources": [],
-        "isCompleted": true,
-        "isPassed": true,
-        "score": 100,
-        "tries": 4,
-        "quiz": {
-          "isPassed": true,
-          "tries": 4,
-          "score": 100,
-          "lessonId": "L1490",
-          "questions": [
-            {
-              "questionId": "Q4738",
-              "answers": [
-                "right",
-                "no",
-                "wrong",
-                "not"
-              ],
-              "correctAnswer": "right",
-              "questionText": "q1",
-              "studentAnswer": "right",
-              "isCorrect": false
-            }
-          ]
-        }
-      },
-      {
-        "lessonId": "L9103",
-        "title": "lesson 2",
-        "content": "test 2",
-        "resources": [],
-        "isCompleted": true,
-        "isPassed": true,
-        "score": 100,
-        "tries": 2,
-        "quiz": {
-          "isPassed": true,
-          "tries": 2,
-          "score": 100,
-          "lessonId": "L9103",
-          "questions": [
-            {
-              "questionId": "Q6010",
-              "answers": [
-                "right",
-                "n",
-                "not",
-                "no"
-              ],
-              "correctAnswer": "right",
-              "questionText": "q1",
-              "studentAnswer": "right",
-              "isCorrect": false
-            },
-            {
-              "questionId": "Q2327",
-              "answers": [
-                "wrong",
-                "right",
-                "no",
-                "no"
-              ],
-              "correctAnswer": "right",
-              "questionText": "q2",
-              "studentAnswer": "right",
-              "isCorrect": false
-            }
-          ]
-        }
-      },
-      {
-        "lessonId": "L1576",
-        "title": "lesson 4",
-        "content": "test 4",
+        "title": "dkdkdd",
+        "content": "ddd",
         "resources": [],
         "isCompleted": false,
         "isPassed": false,
         "score": 0,
-        "tries": 0,
-        "quiz": {
-          "isPassed": false,
-          "tries": 0,
-          "score": 0,
-          "lessonId": "L1576",
-          "questions": [
-            {
-              "questionId": "Q2346",
-              "answers": [
-                "yes",
-                "ddd",
-                "dd",
-                "d"
-              ],
-              "correctAnswer": "yes",
-              "questionText": "q1",
-              "isCorrect": false
-            }
-          ]
-        }
+        "tries": 0
       }
     ],
     "studentIds": [
-      "student",
-      "student2"
+      "student"
     ],
     "approvalStatus": "APPROVED",
-    "progress": {
-      "student": [
-        "L4240",
-        "L1862",
-        "L8210",
-        "L7616",
-        "L1490"
-      ],
-      "student2": [
-        "L4240",
-        "L1862",
-        "L8210",
-        "L7616",
-        "L2479",
-        "L1490",
-        "L9103"
-      ]
-    }
+    "progress": {}
+  },
+  {
+    "courseId": "C3819",
+    "title": "wwwww",
+    "description": "wwwww",
+    "instructorId": "I7723",
+    "lessons": [],
+    "studentIds": [],
+    "approvalStatus": "APPROVED",
+    "progress": {}
+  },
+  {
+    "courseId": "C9121",
+    "title": "eeeee",
+    "description": "eeeee",
+    "instructorId": "I7723",
+    "lessons": [],
+    "studentIds": [],
+    "approvalStatus": "APPROVED",
+    "progress": {}
+  },
+  {
+    "courseId": "C1687",
+    "title": "qqqqqq",
+    "description": "qqqqq",
+    "instructorId": "I7723",
+    "lessons": [],
+    "studentIds": [],
+    "approvalStatus": "APPROVED",
+    "progress": {}
+  },
+  {
+    "courseId": "C7935",
+    "title": "123",
+    "description": "123",
+    "instructorId": "I7723",
+    "lessons": [],
+    "studentIds": [],
+    "approvalStatus": "PENDING",
+    "progress": {}
+  },
+  {
+    "courseId": "C0841",
+    "title": "33333",
+    "description": "3333",
+    "instructorId": "I7723",
+    "lessons": [],
+    "studentIds": [],
+    "approvalStatus": "PENDING",
+    "progress": {}
   }
 ]

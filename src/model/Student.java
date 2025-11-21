@@ -51,6 +51,7 @@ public class Student extends User {
 
     public boolean isEnrolled(String courseId) {
         ensureCollections();
+        if(enrolledCourseIds.contains(courseId)) return false;
         return enrolledCourseIds.contains(courseId);
     }
 
