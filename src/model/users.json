@@ -18,6 +18,7 @@
           "tries": 1
         }
       },
+      "certificateList": [],
       "userId": "S6129",
       "role": "student",
       "username": "student",
@@ -33,20 +34,73 @@
           "score": 100,
           "passed": true,
           "completed": true,
-          "tries": 1
+          "tries": 4
+        },
+        "L3442": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 3
+        },
+        "L1264": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 2
         }
       },
+      "certificateList": [],
       "userId": "S3409",
       "role": "student",
       "username": "std",
       "email": "std@gmail.com",
       "password": "a7f5397443359ea76c50be82c77f1f893a060925b51a332cc5da906f83d3344e"
+    },
+    {
+      "enrolledCourseIds": [
+        "C6968"
+      ],
+      "lessonProgressMap": {
+        "L8848": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        },
+        "L3442": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        },
+        "L1264": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        }
+      },
+      "certificateList": [
+        {
+          "certificateId": "CERT-2835",
+          "studentId": "S3602",
+          "courseId": "C6968",
+          "issueDate": "22-11-2025"
+        }
+      ],
+      "userId": "S3602",
+      "role": "student",
+      "username": "aly",
+      "email": "aly@gmail.com",
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
     }
   ],
   "instructors": [
     {
       "createdCourses": [
-        "C6968"
+        "C6968",
+        "C0748",
+        "C5642"
       ],
       "userId": "I8963",
       "role": "instructor",

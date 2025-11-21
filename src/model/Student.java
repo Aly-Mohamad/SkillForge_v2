@@ -9,8 +9,8 @@ public class Student extends User {
 
     private List<String> enrolledCourseIds;
     private Map<String, LessonProgress> lessonProgressMap;
+    private ArrayList<Certificate> certificateList;
 
-    // No-arg constructor for deserialization
     public Student() {
         super();
         initCollections();
@@ -29,9 +29,9 @@ public class Student extends User {
     private void ensureCollections() {
         if (enrolledCourseIds == null) enrolledCourseIds = new ArrayList<>();
         if (lessonProgressMap == null) lessonProgressMap = new HashMap<>();
+        if (certificateList == null) certificateList = new ArrayList<>();
     }
 
-    // Course enrollment
     public List<String> getCourseIds() {
         ensureCollections();
         return enrolledCourseIds;
@@ -51,15 +51,14 @@ public class Student extends User {
 
     public boolean isEnrolled(String courseId) {
         ensureCollections();
-        if(enrolledCourseIds.contains(courseId)) return false;
-        return enrolledCourseIds.contains(courseId);
+        if(enrolledCourseIds.contains(courseId)) return true;
+        return false;
     }
 
     public void setEnrolledCourseIds(List<String> courseIds) {
         enrolledCourseIds = (courseIds != null) ? new ArrayList<>(courseIds) : new ArrayList<>();
     }
 
-    // Lesson progress tracking
     public void markLessonCompleted(String lessonId, int score, boolean passed) {
         ensureCollections();
         LessonProgress progress = lessonProgressMap.getOrDefault(lessonId, new LessonProgress());
@@ -84,5 +83,14 @@ public class Student extends User {
     public Map<String, LessonProgress> getAllLessonProgress() {
         ensureCollections();
         return lessonProgressMap;
+    }
+
+    public void generateCertificate(Course course) {
+        ensureCollections();
+        certificateList.add(new Certificate(getUserId(), course.getCourseId()));
+    }
+
+    public ArrayList<Certificate> getCertificateList() {
+        return certificateList;
     }
 }

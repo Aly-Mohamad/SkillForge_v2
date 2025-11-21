@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="jcommon-1.0.23">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../../jcommon-1.0.23.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jcommon-1.0.23.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -56,17 +56,18 @@ public class StudentDashboardFrame extends JFrame {
         JButton btnEnroll = new JButton("➕ Enroll");
         JButton btnView = new JButton("📖 View Lessons");
         JButton btnLogout = new JButton("🚪 Logout");
+        JButton btnCert = new JButton("🎓 Certificates Earned");
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 10));
         buttonPanel.add(btnEnroll);
         buttonPanel.add(btnView);
+        buttonPanel.add(btnCert);
         buttonPanel.add(btnLogout);
 
         mainPanel.add(centerPanel, BorderLayout.CENTER);
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
         add(mainPanel);
 
-        // ---------------- BUTTON ACTIONS -----------------
         btnEnroll.addActionListener(e -> {
             Course selected = availableList.getSelectedValue();
             if (selected == null) {
@@ -88,7 +89,11 @@ public class StudentDashboardFrame extends JFrame {
                 return;
             }
             new LessonListDialog(this, db, student, selected).setVisible(true);
-            enrolledList.repaint(); // refresh progress
+            enrolledList.repaint();
+        });
+
+        btnCert.addActionListener(e -> {
+            new CertificateListFrame(student).setVisible(true);
         });
 
         btnLogout.addActionListener(e -> {

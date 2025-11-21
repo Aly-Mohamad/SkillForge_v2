@@ -7,11 +7,7 @@ public class LessonProgress {
     private boolean completed;
     private int tries;
 
-    public LessonProgress() {
-        // No-arg constructor for Gson
-    }
-
-
+    public LessonProgress() {}
 
     public LessonProgress(String studentId, int score, boolean passed, boolean completed) {
         this.studentId = studentId;

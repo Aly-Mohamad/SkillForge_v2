@@ -111,6 +111,16 @@ public class LessonQuizDialog extends JDialog {
                     "You scored: " + score + "%\n" +
                             (passed ? "✅ You passed the quiz!" : "❌ You did not pass. Try again later."));
 
+            if (course.getCompletionPercentage(student) == 100){
+                student.generateCertificate(course);
+                db.save();
+                JOptionPane.showMessageDialog(this,
+                        "🎉 Congratulations! You completed the entire course!\n" +
+                                "Your certificate has been generated.");
+            }
+
+
+
             // Add this helper inside LessonQuizDialog and call it after grading:
             showReviewPanel(quiz.getQuestions(), correct, total);
 
