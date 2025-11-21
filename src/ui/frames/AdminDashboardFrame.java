@@ -13,7 +13,6 @@ public class AdminDashboardFrame extends JFrame {
     private JsonDatabaseManager db;
     private Admin admin;
 
-    // Replaced JList with a panel that holds rows
     private JPanel listPanel;
     private JScrollPane listScrollPane;
 

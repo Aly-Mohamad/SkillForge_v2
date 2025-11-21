@@ -2,83 +2,134 @@
   "students": [
     {
       "enrolledCourseIds": [
-        "C4131",
-        "C6141"
+        "C6968"
       ],
-      "userId": "S1970",
+      "lessonProgressMap": {
+        "L8848": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        },
+        "L3442": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        }
+      },
+      "certificateList": [],
+      "userId": "S6129",
       "role": "student",
       "username": "student",
       "email": "student@gmail.com",
       "password": "264c8c381bf16c982a4e59b0dd4c6f7808c51a05f64c35db42cc78a2a72875bb"
     },
     {
-      "enrolledCourseIds": [],
-      "userId": "S9300",
+      "enrolledCourseIds": [
+        "C6968"
+      ],
+      "lessonProgressMap": {
+        "L8848": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 4
+        },
+        "L3442": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 3
+        },
+        "L1264": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 2
+        }
+      },
+      "certificateList": [],
+      "userId": "S3409",
       "role": "student",
-      "username": "loay",
-      "email": "loay@gmail.com",
+      "username": "std",
+      "email": "std@gmail.com",
+      "password": "a7f5397443359ea76c50be82c77f1f893a060925b51a332cc5da906f83d3344e"
+    },
+    {
+      "enrolledCourseIds": [
+        "C6968"
+      ],
+      "lessonProgressMap": {
+        "L8848": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        },
+        "L3442": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        },
+        "L1264": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        }
+      },
+      "certificateList": [
+        {
+          "certificateId": "CERT-2835",
+          "studentId": "S3602",
+          "courseId": "C6968",
+          "issueDate": "22-11-2025"
+        }
+      ],
+      "userId": "S3602",
+      "role": "student",
+      "username": "aly",
+      "email": "aly@gmail.com",
       "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
     }
   ],
   "instructors": [
     {
       "createdCourses": [
-        "C4131",
-        "C6141"
+        "C6968",
+        "C0748",
+        "C5642"
       ],
-      "userId": "I5967",
+      "userId": "I8963",
       "role": "instructor",
       "username": "instructor",
       "email": "instructor@gmail.com",
       "password": "cf2eb894cc40f5c6e781910063859278a3b214a3a14fedb9ca336ca39962b856"
-    },
-    {
-      "createdCourses": [],
-      "userId": "I7869",
-      "role": "instructor",
-      "username": "instructor2",
-      "email": "instructor2@gmail.com",
-      "password": "3f06cf23344743b8263e73669b642bb91a016afad4e1fd0386b4e58579c38c4d"
-    },
-    {
-      "createdCourses": [
-        "C3370",
-        "C6895",
-        "C2936",
-        "C3819",
-        "C9121",
-        "C5644",
-        "C3534",
-        "C1687",
-        "C1479",
-        "C7527",
-        "C0769",
-        "C3776",
-        "C7935",
-        "C9538",
-        "C0841"
-      ],
-      "userId": "I7723",
-      "role": "instructor",
-      "username": "aly",
-      "email": "aly@gmail.com",
-      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
     }
   ],
   "admins": [
     {
-      "userId": "A5277",
+      "userId": "A2491",
       "role": "admin",
       "username": "admin",
       "email": "admin@gmail.com",
       "password": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
     },
     {
-      "userId": "A7983",
+      "userId": "A8996",
       "role": "admin",
-      "username": "ahmed",
-      "email": "ahmed@gmail.com",
-      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+      "username": "admin2",
+      "email": "admin2@gmail.com",
+      "password": "1c142b2d01aa34e9a36bde480645a57fd69e14155dacfab5a3f9257b77fdc8d8"
+    },
+    {
+      "userId": "A3119",
+      "role": "admin",
+      "username": "hoda",
+      "email": "hoda@gmail.com",
+      "password": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"
     }
   ]
 }

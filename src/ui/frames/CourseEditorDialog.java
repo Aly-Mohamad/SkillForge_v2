@@ -3,6 +3,10 @@ package ui.frames;
 import model.*;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CourseEditorDialog extends JDialog {
 
@@ -39,27 +43,67 @@ public class CourseEditorDialog extends JDialog {
         add(scrollPane, BorderLayout.CENTER);
         add(buttons, BorderLayout.SOUTH);
 
+        // Replace the existing Add Lesson action with this version
         addLesson.addActionListener(e -> {
             LessonInfoDialog infoDialog = new LessonInfoDialog(owner);
             infoDialog.setVisible(true);
 
-            if (infoDialog.isConfirmed()) {
-                QuestionEditorDialog questionDialog = new QuestionEditorDialog(owner);
-                questionDialog.setVisible(true);
+            if (!infoDialog.isConfirmed()) {
+                return; // Instructor canceled basic info
+            }
 
-                if (questionDialog.isConfirmed()) {
-                    Lesson newLesson = new Lesson(infoDialog.getLessonTitle(), infoDialog.getLessonContent());
-                    Quiz quiz = new Quiz(newLesson.getLessonId());
-                    Question[] questions = questionDialog.getQuestions().toArray(new Question[0]);
-                    for (Question q : questions) {
-                        quiz.addQuestion(q);
+            // Use a single persistent instance to preserve partially entered data
+            QuestionEditorDialog questionDialog = new QuestionEditorDialog(owner);
+
+            while (true) {
+                questionDialog.setVisible(true); // stays open until either validated-confirm or instructor explicitly discards
+
+                if (!questionDialog.isConfirmed()) {
+                    int choice = JOptionPane.showConfirmDialog(
+                            CourseEditorDialog.this,
+                            "This lesson requires at least one question and all answers must be filled.\n" +
+                            "Do you want to continue editing the questions?",
+                            "Continue editing?",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.WARNING_MESSAGE
+                    );
+                    if (choice == JOptionPane.YES_OPTION) {
+                        // Reopen the same dialog instance, preserving current inputs
+                        continue;
+                    } else {
+                        // Discard adding this lesson entirely
+                        return;
                     }
-                    course.addLesson(newLesson);
-                    lessonPanel.add(createLessonRow(newLesson, course, db, lessonPanel));
-                    lessonPanel.revalidate();
-                    lessonPanel.repaint();
-                    db.save();
                 }
+
+                java.util.List<Question> questions = questionDialog.getQuestions();
+
+                // Safety: ensure at least one question (the dialog already validates, but double-check)
+                if (questions == null || questions.isEmpty()) {
+                    JOptionPane.showMessageDialog(
+                            CourseEditorDialog.this,
+                            "Each lesson must have at least one question.",
+                            "Validation error",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                    // Reopen with preserved data
+                    continue;
+                }
+
+                // Build and save the lesson with validated questions
+                Lesson newLesson = new Lesson(infoDialog.getLessonTitle(), infoDialog.getLessonContent());
+                Quiz quiz = new Quiz(newLesson.getLessonId());
+                for (Question q : questions) {
+                    quiz.addQuestion(q);
+                }
+                newLesson.setQuiz(quiz);
+
+                course.addLesson(newLesson);
+                lessonPanel.add(createLessonRow(newLesson, course, db, lessonPanel));
+                lessonPanel.revalidate();
+                lessonPanel.repaint();
+                db.save();
+                break;
             }
         });
 

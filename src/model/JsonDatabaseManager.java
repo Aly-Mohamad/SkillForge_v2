@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +20,7 @@ public class JsonDatabaseManager {
     private List<User> users = new ArrayList<User>();
     private List<Course> courses = new ArrayList<Course>();
 
-    private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).setPrettyPrinting().create();
 
     public JsonDatabaseManager() { load(); }
 
@@ -47,12 +48,17 @@ public class JsonDatabaseManager {
                 Type courseListType = new TypeToken<ArrayList<Course>>(){}.getType();
                 List<Course> loaded = gson.fromJson(fr, courseListType);
                 fr.close();
-                if (loaded!=null) courses = loaded;
+                if (loaded != null) {
+                    for (Course course : loaded) {
+                        course.ensureProgressMapInitialized();
+                    }
+                    courses = loaded;
+                }
             }
         } catch (Exception e) { System.out.println("Could not load courses.json: " + e.getMessage()); }
     }
 
-    public  void save() {
+    public void save() {
         try {
             List<Student> students = new ArrayList<Student>();
             List<Instructor> instructors = new ArrayList<Instructor>();
@@ -96,6 +102,26 @@ public class JsonDatabaseManager {
     public Optional<User> findById(String id) {
         for (User u : users) {
             if (u.getUserId().equals(id)) return Optional.of(u);
+        }
+        return Optional.empty();
+    }
+    public List<Student> getStudentsByIds(List<String> ids) {
+        List<Student> result = new ArrayList<>();
+        for (User u : users) {
+            if (u instanceof Student && ids.contains(u.getUsername())) {
+                result.add((Student) u);
+            }
+        }
+        return result;
+    }
+
+    // Add this method alongside your existing findByEmail/findById methods
+    public Optional<User> findByUsername(String username) {
+        if (username == null) return Optional.empty();
+        for (User u : users) {
+            if (u.getUsername() != null && u.getUsername().equalsIgnoreCase(username)) {
+                return Optional.of(u);
+            }
         }
         return Optional.empty();
     }
