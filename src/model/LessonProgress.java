@@ -1,11 +1,25 @@
 package model;
 
 public class LessonProgress {
-    private boolean completed;
-    private boolean passed;
+    private String studentId;
     private int score;
+    private boolean passed;
+    private boolean completed;
     private int tries;
 
+    public LessonProgress() {
+        // No-arg constructor for Gson
+    }
+
+
+
+    public LessonProgress(String studentId, int score, boolean passed, boolean completed) {
+        this.studentId = studentId;
+        this.score = score;
+        this.passed = passed;
+        this.completed = completed;
+    }
+    public String getStudentId() { return studentId; }
     public boolean isCompleted() { return completed; }
     public boolean isPassed() { return passed; }
     public int getScore() { return score; }

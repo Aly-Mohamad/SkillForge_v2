@@ -47,7 +47,12 @@ public class JsonDatabaseManager {
                 Type courseListType = new TypeToken<ArrayList<Course>>(){}.getType();
                 List<Course> loaded = gson.fromJson(fr, courseListType);
                 fr.close();
-                if (loaded!=null) courses = loaded;
+                if (loaded != null) {
+                    for (Course course : loaded) {
+                        course.ensureProgressMapInitialized(); // ✅ Ensure map is initialized
+                    }
+                    courses = loaded;
+                }
             }
         } catch (Exception e) { System.out.println("Could not load courses.json: " + e.getMessage()); }
     }
@@ -98,6 +103,15 @@ public class JsonDatabaseManager {
             if (u.getUserId().equals(id)) return Optional.of(u);
         }
         return Optional.empty();
+    }
+    public List<Student> getStudentsByIds(List<String> ids) {
+        List<Student> result = new ArrayList<>();
+        for (User u : users) {
+            if (u instanceof Student && ids.contains(u.getUsername())) {
+                result.add((Student) u);
+            }
+        }
+        return result;
     }
 
     // Add this method alongside your existing findByEmail/findById methods

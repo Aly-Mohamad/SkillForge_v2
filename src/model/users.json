@@ -5,7 +5,50 @@
         "C4131",
         "C6141"
       ],
-      "lessonProgressMap": {},
+      "lessonProgressMap": {
+        "L4240": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 7
+        },
+        "L1862": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 4
+        },
+        "L8210": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        },
+        "L7616": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 2
+        },
+        "L1490": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        },
+        "L3382": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 2
+        },
+        "L1080": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        }
+      },
       "userId": "S1970",
       "role": "student",
       "username": "student",
@@ -13,9 +56,60 @@
       "password": "264c8c381bf16c982a4e59b0dd4c6f7808c51a05f64c35db42cc78a2a72875bb"
     },
     {
-      "enrolledCourseIds": [],
-      "lessonProgressMap": {},
       "userId": "S9300",
+      "enrolledCourseIds": [
+        "C6141"
+      ],
+      "lessonProgressMap": {
+        "L4240": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        },
+        "L1862": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 2
+        },
+        "L8210": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 2
+        },
+        "L7616": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 2
+        },
+        "L2479": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        },
+        "L1490": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 3
+        },
+        "L9103": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 2
+        },
+        "L3382": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        }
+      },
       "role": "student",
       "username": "loay",
       "email": "loay@gmail.com",

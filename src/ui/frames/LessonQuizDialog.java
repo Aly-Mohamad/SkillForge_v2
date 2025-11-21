@@ -83,6 +83,8 @@ public class LessonQuizDialog extends JDialog {
             // Update per-student progress
             student.markLessonCompleted(lesson.getLessonId(), score, passed);
 
+            course.recordLessonProgress(student.getUserId(), lesson.getLessonId(), score, passed);
+
             // Update lesson state inside the course so it persists
             lesson.incrementTries();
             lesson.setScore(score);

@@ -19,7 +19,8 @@
       "student"
     ],
     "approvalStatus": "APPROVED",
-    "progress": {}
+    "progress": {},
+    "lessonProgressMap": {}
   },
   {
     "courseId": "C6141",
@@ -28,59 +29,153 @@
     "instructorId": "I5967",
     "lessons": [
       {
-        "title": "dkdkdd",
-        "content": "ddd",
+        "lessonId": "L3382",
+        "title": "graphs",
+        "content": "",
         "resources": [],
-        "isCompleted": false,
-        "isPassed": false,
-        "score": 0,
-        "tries": 0
+        "isCompleted": true,
+        "isPassed": true,
+        "score": 100,
+        "tries": 3,
+        "quiz": {
+          "isPassed": true,
+          "tries": 3,
+          "score": 100,
+          "lessonId": "L3382",
+          "questions": [
+            {
+              "questionId": "Q0222",
+              "answers": [
+                "kkk",
+                "dwow",
+                "dokwoddjwodj",
+                "djowd"
+              ],
+              "correctAnswer": "kkk",
+              "questionText": "bar charts",
+              "studentAnswer": "kkk",
+              "isCorrect": false
+            },
+            {
+              "questionId": "Q2837",
+              "answers": [
+                "ddd",
+                "djwjd",
+                "djhwid",
+                "wdjow"
+              ],
+              "correctAnswer": "ddd",
+              "questionText": "pie chart",
+              "studentAnswer": "ddd",
+              "isCorrect": false
+            }
+          ]
+        }
+      },
+      {
+        "lessonId": "L1080",
+        "title": "fourier",
+        "content": "",
+        "resources": [],
+        "isCompleted": true,
+        "isPassed": true,
+        "score": 100,
+        "tries": 1,
+        "quiz": {
+          "isPassed": true,
+          "tries": 1,
+          "score": 100,
+          "lessonId": "L1080",
+          "questions": [
+            {
+              "questionId": "Q5103",
+              "answers": [
+                "123",
+                "4458",
+                "7858",
+                "36865"
+              ],
+              "correctAnswer": "123",
+              "questionText": "alo",
+              "studentAnswer": "123",
+              "isCorrect": false
+            },
+            {
+              "questionId": "Q2486",
+              "answers": [
+                "123456",
+                "hrkfdkfj",
+                "ejrgr",
+                "ogrgo"
+              ],
+              "correctAnswer": "123456",
+              "questionText": "123456",
+              "studentAnswer": "123456",
+              "isCorrect": false
+            }
+          ]
+        }
       }
     ],
     "studentIds": [
-      "student"
+      "student",
+      "student2"
     ],
     "approvalStatus": "APPROVED",
-    "progress": {}
-  },
-  {
-    "courseId": "C3819",
-    "title": "wwwww",
-    "description": "wwwww",
-    "instructorId": "I7723",
-    "lessons": [],
-    "studentIds": [],
-    "approvalStatus": "APPROVED",
-    "progress": {}
-  },
-  {
-    "courseId": "C9121",
-    "title": "eeeee",
-    "description": "eeeee",
-    "instructorId": "I7723",
-    "lessons": [],
-    "studentIds": [],
-    "approvalStatus": "APPROVED",
-    "progress": {}
-  },
-  {
-    "courseId": "C1687",
-    "title": "qqqqqq",
-    "description": "qqqqq",
-    "instructorId": "I7723",
-    "lessons": [],
-    "studentIds": [],
-    "approvalStatus": "APPROVED",
-    "progress": {}
-  },
-  {
-    "courseId": "C7935",
-    "title": "123",
-    "description": "123",
-    "instructorId": "I7723",
-    "lessons": [],
-    "studentIds": [],
-    "approvalStatus": "APPROVED",
-    "progress": {}
+    "progress": {
+      "student": [
+        "L4240",
+        "L1862",
+        "L8210",
+        "L7616",
+        "L1490",
+        "L3382",
+        "L1080"
+      ],
+      "student2": [
+        "L4240",
+        "L1862",
+        "L8210",
+        "L7616",
+        "L2479",
+        "L1490",
+        "L9103",
+        "L3382"
+      ]
+    },
+    "lessonProgressMap": {
+      "L3382": [
+        {
+          "studentId": "S8658",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S1970",
+          "score": 0,
+          "passed": false,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S1970",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        }
+      ],
+      "L1080": [
+        {
+          "studentId": "S1970",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        }
+      ]
+    }
   }
 ]
