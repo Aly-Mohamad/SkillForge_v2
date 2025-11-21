@@ -10,6 +10,12 @@
           "passed": true,
           "completed": true,
           "tries": 1
+        },
+        "L3442": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
         }
       },
       "userId": "S6129",
@@ -17,6 +23,24 @@
       "username": "student",
       "email": "student@gmail.com",
       "password": "264c8c381bf16c982a4e59b0dd4c6f7808c51a05f64c35db42cc78a2a72875bb"
+    },
+    {
+      "enrolledCourseIds": [
+        "C6968"
+      ],
+      "lessonProgressMap": {
+        "L8848": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        }
+      },
+      "userId": "S3409",
+      "role": "student",
+      "username": "std",
+      "email": "std@gmail.com",
+      "password": "a7f5397443359ea76c50be82c77f1f893a060925b51a332cc5da906f83d3344e"
     }
   ],
   "instructors": [
@@ -45,6 +69,13 @@
       "username": "admin2",
       "email": "admin2@gmail.com",
       "password": "1c142b2d01aa34e9a36bde480645a57fd69e14155dacfab5a3f9257b77fdc8d8"
+    },
+    {
+      "userId": "A3119",
+      "role": "admin",
+      "username": "hoda",
+      "email": "hoda@gmail.com",
+      "password": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"
     }
   ]
 }

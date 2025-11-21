@@ -230,7 +230,29 @@ public class InstructorDashboardFrame extends JFrame {
         for (var entry : data.entrySet()) {
             dataset.addValue(entry.getValue(), "Value", entry.getKey());
         }
-        JFreeChart chart = ChartFactory.createBarChart(title, "Lesson", "Value", dataset);
+
+        JFreeChart chart = ChartFactory.createBarChart(
+                title,
+                "Lesson",
+                "Value",
+                dataset
+        );
+
+        // Customize the chart
+        var plot = chart.getCategoryPlot();
+        var renderer = (org.jfree.chart.renderer.category.BarRenderer) plot.getRenderer();
+
+        // 1. Set bar color
+        renderer.setSeriesPaint(0, new Color(137, 207, 240)); // Baby blue
+
+        // 2. Adjust bar width
+        int itemCount = dataset.getColumnCount();
+        if (itemCount == 1) {
+            renderer.setMaximumBarWidth(0.1); // Narrower bar when only one item
+        } else {
+            renderer.setMaximumBarWidth(0.2); // Default width for multiple bars
+        }
+
         return new ChartPanel(chart);
     }
 }
