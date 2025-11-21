@@ -1,81 +1,14 @@
 [
   {
-    "courseId": "C4131",
-    "title": "Python",
-    "description": "",
-    "instructorId": "I5967",
+    "courseId": "C6968",
+    "title": "Math 2",
+    "description": "Integration and Infinite Series",
+    "instructorId": "I8963",
     "lessons": [
       {
-        "title": "New Lesson",
-        "content": "",
-        "resources": [],
-        "isCompleted": false,
-        "isPassed": false,
-        "score": 0,
-        "tries": 0
-      }
-    ],
-    "studentIds": [
-      "student"
-    ],
-    "approvalStatus": "APPROVED",
-    "progress": {},
-    "lessonProgressMap": {}
-  },
-  {
-    "courseId": "C6141",
-    "title": "math 2",
-    "description": "",
-    "instructorId": "I5967",
-    "lessons": [
-      {
-        "lessonId": "L3382",
-        "title": "graphs",
-        "content": "",
-        "resources": [],
-        "isCompleted": true,
-        "isPassed": true,
-        "score": 100,
-        "tries": 3,
-        "quiz": {
-          "isPassed": true,
-          "tries": 3,
-          "score": 100,
-          "lessonId": "L3382",
-          "questions": [
-            {
-              "questionId": "Q0222",
-              "answers": [
-                "kkk",
-                "dwow",
-                "dokwoddjwodj",
-                "djowd"
-              ],
-              "correctAnswer": "kkk",
-              "questionText": "bar charts",
-              "studentAnswer": "kkk",
-              "isCorrect": false
-            },
-            {
-              "questionId": "Q2837",
-              "answers": [
-                "ddd",
-                "djwjd",
-                "djhwid",
-                "wdjow"
-              ],
-              "correctAnswer": "ddd",
-              "questionText": "pie chart",
-              "studentAnswer": "ddd",
-              "isCorrect": false
-            }
-          ]
-        }
-      },
-      {
-        "lessonId": "L1080",
-        "title": "fourier",
-        "content": "",
+        "lessonId": "L8848",
+        "title": "Basics Integration",
+        "content": "integration",
         "resources": [],
         "isCompleted": true,
         "isPassed": true,
@@ -85,32 +18,19 @@
           "isPassed": true,
           "tries": 1,
           "score": 100,
-          "lessonId": "L1080",
+          "lessonId": "L8848",
           "questions": [
             {
-              "questionId": "Q5103",
+              "questionId": "Q7581",
               "answers": [
-                "123",
-                "4458",
-                "7858",
-                "36865"
+                "no",
+                "right",
+                "wrong",
+                "ff"
               ],
-              "correctAnswer": "123",
-              "questionText": "alo",
-              "studentAnswer": "123",
-              "isCorrect": false
-            },
-            {
-              "questionId": "Q2486",
-              "answers": [
-                "123456",
-                "hrkfdkfj",
-                "ejrgr",
-                "ogrgo"
-              ],
-              "correctAnswer": "123456",
-              "questionText": "123456",
-              "studentAnswer": "123456",
+              "correctAnswer": "right",
+              "questionText": "q1",
+              "studentAnswer": "right",
               "isCorrect": false
             }
           ]
@@ -118,58 +38,18 @@
       }
     ],
     "studentIds": [
-      "student",
-      "student2"
+      "student"
     ],
     "approvalStatus": "APPROVED",
     "progress": {
       "student": [
-        "L4240",
-        "L1862",
-        "L8210",
-        "L7616",
-        "L1490",
-        "L3382",
-        "L1080"
-      ],
-      "student2": [
-        "L4240",
-        "L1862",
-        "L8210",
-        "L7616",
-        "L2479",
-        "L1490",
-        "L9103",
-        "L3382"
+        "L8848"
       ]
     },
     "lessonProgressMap": {
-      "L3382": [
+      "L8848": [
         {
-          "studentId": "S8658",
-          "score": 100,
-          "passed": true,
-          "completed": true,
-          "tries": 0
-        },
-        {
-          "studentId": "S1970",
-          "score": 0,
-          "passed": false,
-          "completed": true,
-          "tries": 0
-        },
-        {
-          "studentId": "S1970",
-          "score": 100,
-          "passed": true,
-          "completed": true,
-          "tries": 0
-        }
-      ],
-      "L1080": [
-        {
-          "studentId": "S1970",
+          "studentId": "S6129",
           "score": 100,
           "passed": true,
           "completed": true,

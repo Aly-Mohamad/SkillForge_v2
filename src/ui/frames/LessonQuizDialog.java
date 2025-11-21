@@ -112,7 +112,7 @@ public class LessonQuizDialog extends JDialog {
                             (passed ? "✅ You passed the quiz!" : "❌ You did not pass. Try again later."));
 
             // Add this helper inside LessonQuizDialog and call it after grading:
-            showReviewPanel(quiz.getQuestions(), score, total);
+            showReviewPanel(quiz.getQuestions(), correct, total);
 
         });
 
