@@ -13,7 +13,7 @@ public class Course {
     private final String instructorId;
     private List<Lesson> lessons;
     private List<String> studentIds; // Store student IDs instead of full objects
-    private final String approvalStatus;
+    private String approvalStatus;
     private Map<String, List<String>> progress;
 
     public Course(String title, String description, String instructorId) {

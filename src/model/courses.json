@@ -80,17 +80,7 @@
     "instructorId": "I7723",
     "lessons": [],
     "studentIds": [],
-    "approvalStatus": "PENDING",
-    "progress": {}
-  },
-  {
-    "courseId": "C0841",
-    "title": "33333",
-    "description": "3333",
-    "instructorId": "I7723",
-    "lessons": [],
-    "studentIds": [],
-    "approvalStatus": "PENDING",
+    "approvalStatus": "APPROVED",
     "progress": {}
   }
 ]

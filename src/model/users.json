@@ -5,6 +5,7 @@
         "C4131",
         "C6141"
       ],
+      "lessonProgressMap": {},
       "userId": "S1970",
       "role": "student",
       "username": "student",
@@ -13,6 +14,7 @@
     },
     {
       "enrolledCourseIds": [],
+      "lessonProgressMap": {},
       "userId": "S9300",
       "role": "student",
       "username": "loay",
