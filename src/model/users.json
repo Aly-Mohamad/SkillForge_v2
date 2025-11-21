@@ -7,33 +7,45 @@
       ],
       "lessonProgressMap": {
         "L4240": {
-          "completed": true,
-          "passed": true,
           "score": 100,
+          "passed": true,
+          "completed": true,
           "tries": 7
         },
         "L1862": {
-          "completed": true,
-          "passed": true,
           "score": 100,
+          "passed": true,
+          "completed": true,
           "tries": 4
         },
         "L8210": {
-          "completed": true,
-          "passed": true,
           "score": 100,
+          "passed": true,
+          "completed": true,
           "tries": 1
         },
         "L7616": {
-          "completed": true,
-          "passed": true,
           "score": 100,
+          "passed": true,
+          "completed": true,
           "tries": 2
         },
         "L1490": {
-          "completed": true,
-          "passed": true,
           "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        },
+        "L3382": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 2
+        },
+        "L1080": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
           "tries": 1
         }
       },
@@ -49,46 +61,52 @@
       ],
       "lessonProgressMap": {
         "L4240": {
-          "completed": true,
-          "passed": true,
           "score": 100,
+          "passed": true,
+          "completed": true,
           "tries": 1
         },
         "L1862": {
-          "completed": true,
-          "passed": true,
           "score": 100,
+          "passed": true,
+          "completed": true,
           "tries": 2
         },
         "L8210": {
-          "completed": true,
-          "passed": true,
           "score": 100,
+          "passed": true,
+          "completed": true,
           "tries": 2
         },
         "L7616": {
-          "completed": true,
-          "passed": true,
           "score": 100,
+          "passed": true,
+          "completed": true,
           "tries": 2
         },
         "L2479": {
-          "completed": true,
-          "passed": true,
           "score": 100,
+          "passed": true,
+          "completed": true,
           "tries": 1
         },
         "L1490": {
-          "completed": true,
-          "passed": true,
           "score": 100,
+          "passed": true,
+          "completed": true,
           "tries": 3
         },
         "L9103": {
-          "completed": true,
-          "passed": true,
           "score": 100,
+          "passed": true,
+          "completed": true,
           "tries": 2
+        },
+        "L3382": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
         }
       },
       "userId": "S8658",

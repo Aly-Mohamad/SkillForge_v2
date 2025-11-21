@@ -4,6 +4,11 @@ import model.*;
 import javax.swing.*;
 import java.awt.*;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.DefaultCategoryDataset;
+
 public class InstructorDashboardFrame extends JFrame {
     private JsonDatabaseManager db;
     private Instructor instructor;
@@ -50,6 +55,8 @@ public class InstructorDashboardFrame extends JFrame {
         JButton btnCreate = new JButton("➕ Create Course");
         JButton btnEdit = new JButton("✏️ Edit Course");
         JButton btnViewStudents = new JButton("👥 View Enrolled Students");
+        JButton btnInsights = new JButton("📊 Insights");
+        buttonPanel.add(btnInsights);
         JButton logoutButton = new JButton("🚪 Logout");
 
         buttonPanel.add(btnCreate);
@@ -149,6 +156,31 @@ public class InstructorDashboardFrame extends JFrame {
                     JOptionPane.PLAIN_MESSAGE
             );
         });
+        btnInsights.addActionListener(e -> {
+            Course selected = list.getSelectedValue();
+            if (selected == null) {
+                JOptionPane.showMessageDialog(this, "Select a course to view insights.");
+                return;
+            }
+
+            java.util.Map<String, Double> avgScores = new java.util.LinkedHashMap<>();
+            java.util.Map<String, Double> completionRates = new java.util.LinkedHashMap<>();
+
+            // 🔹 Get full Student objects from student IDs
+            java.util.List<Student> students = db.getStudentsByIds(selected.getStudentIds());
+
+            for (Lesson lesson : selected.getLessons()) {
+                String title = lesson.getTitle();
+                avgScores.put(title, selected.getAverageScorePerLesson(lesson.getLessonId()));
+                completionRates.put(title, selected.getCompletionRate(lesson.getLessonId(), students));
+            }
+
+            JPanel chartPanel = new JPanel(new GridLayout(2, 1));
+            chartPanel.add(createBarChart("Average Quiz Scores", avgScores));
+            chartPanel.add(createBarChart("Lesson Completion %", completionRates));
+
+            new ChartFrame("Insights - " + selected.getTitle(), chartPanel).setVisible(true);
+        });
 
         logoutButton.addActionListener(e -> {
             int choice = JOptionPane.showConfirmDialog(
@@ -192,5 +224,13 @@ public class InstructorDashboardFrame extends JFrame {
 
         // Last resort: empty list, UI will still show stored identifiers
         return java.util.Collections.emptyList();
+    }
+    private JPanel createBarChart(String title, java.util.Map<String, Double> data) {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (var entry : data.entrySet()) {
+            dataset.addValue(entry.getValue(), "Value", entry.getKey());
+        }
+        JFreeChart chart = ChartFactory.createBarChart(title, "Lesson", "Value", dataset);
+        return new ChartPanel(chart);
     }
 }
