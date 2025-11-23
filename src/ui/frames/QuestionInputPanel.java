@@ -1,8 +1,6 @@
 package ui.frames;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.*;
 import model.Question;
 
@@ -28,8 +26,6 @@ class QuestionInputPanel extends JPanel {
             answerRow.add(radioButtons[i], BorderLayout.EAST);
             add(answerRow);
         }
-
-        // Optional: select the first radio button by default
         radioButtons[0].setSelected(true);
     }
 

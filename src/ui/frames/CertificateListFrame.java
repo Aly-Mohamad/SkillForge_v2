@@ -1,8 +1,6 @@
 package ui.frames;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import model.Certificate;
 import model.Student;
@@ -78,13 +76,17 @@ public class CertificateListFrame extends JFrame{
             downloadButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    String pdfPath = "src/Certificate.pdf";
+                    String pdfPath = "src/Certificate "+student.getUsername()+".pdf";
                     Document document = new Document();
                     try {
                         PdfWriter.getInstance(document, new FileOutputStream(pdfPath));
                         document.open();
-                        document.add(new Paragraph("Certificate of Completion"));
+                        Paragraph title = new Paragraph("CERTIFICATE OF COMPLETION");
+                        title.setAlignment(Element.ALIGN_CENTER);
+                        title.setSpacingAfter(30);
+                        document.add(title);
                         document.add(new Paragraph("CertificateId: " + cert.getCertificateId()));
+                        document.add(new Paragraph("Student Name: " + student.getUsername()));
                         document.add(new Paragraph("Student ID: " + cert.getStudentId()));
                         document.add(new Paragraph("Course ID: " + cert.getCourseId()));
                         document.add(new Paragraph("Issue Date: " + cert.getIssueDate().toString()));

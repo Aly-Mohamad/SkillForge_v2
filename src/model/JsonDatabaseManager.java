@@ -135,13 +135,6 @@ public class JsonDatabaseManager {
         return courses;
     }
 
-    public Optional<Course> getCourseById(String id) {
-        for (Course c : courses) {
-            if (c.getCourseId().equals(id)) return Optional.of(c);
-        }
-        return Optional.empty();
-    }
-
     public void updateCourse(Course updated) {
         for (int i=0;i<courses.size();i++) if (courses.get(i).getCourseId().equals(updated.getCourseId())) { courses.set(i, updated); break; }
         save();

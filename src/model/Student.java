@@ -32,21 +32,11 @@ public class Student extends User {
         if (certificateList == null) certificateList = new ArrayList<>();
     }
 
-    public List<String> getCourseIds() {
-        ensureCollections();
-        return enrolledCourseIds;
-    }
-
     public void enroll(String courseId) {
         ensureCollections();
         if (!enrolledCourseIds.contains(courseId)) {
             enrolledCourseIds.add(courseId);
         }
-    }
-
-    public void unenroll(String courseId) {
-        ensureCollections();
-        enrolledCourseIds.remove(courseId);
     }
 
     public boolean isEnrolled(String courseId) {
@@ -55,16 +45,12 @@ public class Student extends User {
         return false;
     }
 
-    public void setEnrolledCourseIds(List<String> courseIds) {
-        enrolledCourseIds = (courseIds != null) ? new ArrayList<>(courseIds) : new ArrayList<>();
-    }
-
     public void markLessonCompleted(String lessonId, int score, boolean passed) {
         ensureCollections();
         LessonProgress progress = lessonProgressMap.getOrDefault(lessonId, new LessonProgress());
         progress.setScore(score);
         progress.setPassed(passed);
-        progress.setCompleted(passed); // only mark as completed if passed
+        progress.setCompleted(passed);
         progress.incrementTries();
         lessonProgressMap.put(lessonId, progress);
     }
@@ -73,16 +59,6 @@ public class Student extends User {
         ensureCollections();
         LessonProgress progress = lessonProgressMap.get(lessonId);
         return progress != null && progress.isCompleted();
-    }
-
-    public LessonProgress getLessonProgress(String lessonId) {
-        ensureCollections();
-        return lessonProgressMap.getOrDefault(lessonId, new LessonProgress());
-    }
-
-    public Map<String, LessonProgress> getAllLessonProgress() {
-        ensureCollections();
-        return lessonProgressMap;
     }
 
     public void generateCertificate(Course course) {

@@ -3,6 +3,9 @@ package ui.frames;
 import model.*;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -12,6 +15,8 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class InstructorDashboardFrame extends JFrame {
     private JsonDatabaseManager db;
     private Instructor instructor;
+    private JPanel coursesPanel;
+    private JScrollPane scrollPane;
 
     public InstructorDashboardFrame(JsonDatabaseManager db, Instructor ins) {
         this.db = db;
@@ -27,46 +32,29 @@ public class InstructorDashboardFrame extends JFrame {
         JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        final DefaultListModel<Course> model = new DefaultListModel<>();
-        final JList<Course> list = new JList<>(model);
-        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        list.setFixedCellHeight(40);
-        list.setCellRenderer(new ListCellRenderer<Course>() {
-            public Component getListCellRendererComponent(JList<? extends Course> l, Course value, int index, boolean isSelected, boolean cellHasFocus) {
-                int studentCount = value.getStudentIds().size();
-                String display = "📘 " + value.getTitle() + "  —  👥 " + studentCount + " enrolled";
-                JLabel label = new JLabel(display);
-                label.setFont(new Font("SansSerif", Font.PLAIN, 14));
-                label.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
-                label.setOpaque(true);
-                label.setBackground(isSelected ? new Color(220, 240, 255) : Color.WHITE);
-                label.setForeground(isSelected ? Color.BLACK : new Color(50, 50, 50));
-                return label;
-            }
-        });
+        // Use a panel with BoxLayout instead of JList
+        coursesPanel = new JPanel();
+        coursesPanel.setLayout(new BoxLayout(coursesPanel, BoxLayout.Y_AXIS));
+        coursesPanel.setBackground(Color.WHITE);
 
-        for (Course c : db.getAllCourses()) {
-            if (c.getInstructorId().equals(instructor.getUserId())) {
-                model.addElement(c);
-            }
-        }
+        scrollPane = new JScrollPane(coursesPanel);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(12);
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 10));
         JButton btnCreate = new JButton("➕ Create Course");
-        JButton btnEdit = new JButton("✏️ Edit Course");
-        JButton btnViewStudents = new JButton("👥 View Enrolled Students");
         JButton btnInsights = new JButton("📊 Insights");
-        buttonPanel.add(btnInsights);
         JButton logoutButton = new JButton("🚪 Logout");
 
         buttonPanel.add(btnCreate);
-        buttonPanel.add(btnEdit);
-        buttonPanel.add(btnViewStudents);
+        buttonPanel.add(btnInsights);
         buttonPanel.add(logoutButton);
 
-        mainPanel.add(new JScrollPane(list), BorderLayout.CENTER);
+        mainPanel.add(scrollPane, BorderLayout.CENTER);
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
         add(mainPanel);
+
+        // Load courses
+        refreshCoursesPanel();
 
         btnCreate.addActionListener(e -> {
             JPanel inputPanel = new JPanel(new GridLayout(4, 1, 5, 5));
@@ -100,73 +88,26 @@ public class InstructorDashboardFrame extends JFrame {
                 db.addCourse(c);
                 instructor.addCourse(c.getCourseId());
                 db.save();
-                model.addElement(c);
+                refreshCoursesPanel();
             }
         });
 
-        btnEdit.addActionListener(e -> {
-            Course c = list.getSelectedValue();
-            if (c == null) {
-                JOptionPane.showMessageDialog(this, "Select a course");
-                return;
-            }
-            new CourseEditorDialog(this, db, c).setVisible(true);
-        });
-
-        btnViewStudents.addActionListener(e -> {
-            Course c = list.getSelectedValue();
-            if (c == null) {
-                JOptionPane.showMessageDialog(this, "Select a course");
-                return;
-            }
-
-            javax.swing.DefaultListModel<String> modelList = new javax.swing.DefaultListModel<>();
-            java.util.LinkedHashSet<String> ids = new java.util.LinkedHashSet<>();
-            if (c.getStudentIds() != null) ids.addAll(c.getStudentIds());
-
-            for (String idOrUsername : ids) {
-                // Try to resolve by userId first, then by username
-                java.util.Optional<User> opt = db.findById(idOrUsername);
-                if (opt.isEmpty()) {
-                    opt = db.findByUsername(idOrUsername);
-                }
-
-                if (opt.isPresent() && opt.get() instanceof Student s) {
-                    String uname = s.getUsername() != null ? s.getUsername() : "(unknown)";
-                    String email = s.getEmail() != null ? s.getEmail() : "(no email)";
-                    modelList.addElement(uname + " (" + email + ")");
-                } else {
-                    modelList.addElement(idOrUsername + " (email unknown)");
-                }
-            }
-
-            if (modelList.isEmpty()) {
-                modelList.addElement("No enrolled students yet.");
-            }
-
-            javax.swing.JList<String> jList = new javax.swing.JList<>(modelList);
-            jList.setVisibleRowCount(10);
-            javax.swing.JScrollPane scroll = new javax.swing.JScrollPane(jList);
-            scroll.setPreferredSize(new java.awt.Dimension(420, 240));
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    scroll,
-                    "Enrolled students",
-                    JOptionPane.PLAIN_MESSAGE
-            );
-        });
         btnInsights.addActionListener(e -> {
-            Course selected = list.getSelectedValue();
-            if (selected == null) {
-                JOptionPane.showMessageDialog(this, "Select a course to view insights.");
+            // For insights, we need to get the selected course differently
+            // You can modify this to use a selection mechanism or show all courses
+            List<Course> instructorCourses = getInstructorCourses();
+            if (instructorCourses.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No courses available for insights.");
                 return;
             }
+
+            // Show a dialog to select a course for insights
+            Course selected = showCourseSelectionDialog(instructorCourses);
+            if (selected == null) return;
 
             java.util.Map<String, Double> avgScores = new java.util.LinkedHashMap<>();
             java.util.Map<String, Double> completionRates = new java.util.LinkedHashMap<>();
 
-            // 🔹 Get full Student objects from student IDs
             java.util.List<Student> students = db.getStudentsByIds(selected.getStudentIds());
 
             for (Lesson lesson : selected.getLessons()) {
@@ -197,34 +138,205 @@ public class InstructorDashboardFrame extends JFrame {
         });
     }
 
-    // Add this helper method inside InstructorDashboardFrame (e.g., below init())
-    @SuppressWarnings("unchecked")
-    private java.util.List<Student> loadAllStudents() {
-        // Prefer a direct API if available: db.getAllStudents()
-        try {
-            java.lang.reflect.Method m = db.getClass().getMethod("getAllStudents");
-            Object result = m.invoke(db);
-            if (result instanceof java.util.List) {
-                return (java.util.List<Student>) result;
-            }
-        } catch (Throwable ignore) { }
+    private void refreshCoursesPanel() {
+        coursesPanel.removeAll();
 
-        // Fallback: try db.getAllUsers() and filter students, if such a method exists
-        try {
-            java.lang.reflect.Method m = db.getClass().getMethod("getAllUsers");
-            Object result = m.invoke(db);
-            java.util.List<Student> out = new java.util.ArrayList<>();
-            if (result instanceof java.util.List<?>) {
-                for (Object u : (java.util.List<?>) result) {
-                    if (u instanceof Student s) out.add(s);
-                }
-            }
-            return out;
-        } catch (Throwable ignore) { }
+        List<Course> instructorCourses = getInstructorCourses();
 
-        // Last resort: empty list, UI will still show stored identifiers
-        return java.util.Collections.emptyList();
+        if (instructorCourses.isEmpty()) {
+            JLabel noCoursesLabel = new JLabel("No courses created yet. Click 'Create Course' to get started!");
+            noCoursesLabel.setFont(new Font("SansSerif", Font.ITALIC, 14));
+            noCoursesLabel.setForeground(Color.GRAY);
+            noCoursesLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            noCoursesLabel.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
+            coursesPanel.add(noCoursesLabel);
+        } else {
+            for (Course course : instructorCourses) {
+                coursesPanel.add(createCourseRow(course));
+                coursesPanel.add(Box.createRigidArea(new Dimension(0, 5)));
+            }
+        }
+
+        coursesPanel.revalidate();
+        coursesPanel.repaint();
     }
+
+    private JPanel createCourseRow(Course course) {
+        JPanel rowPanel = new JPanel(new BorderLayout(10, 0));
+        rowPanel.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(200, 200, 200)),
+                BorderFactory.createEmptyBorder(10, 10, 10, 10)
+        ));
+        rowPanel.setBackground(Color.WHITE);
+        rowPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 60));
+
+        // Course info
+        JPanel infoPanel = new JPanel(new GridLayout(2, 1));
+        infoPanel.setOpaque(false);
+
+        int studentCount = course.getStudentIds().size();
+        JLabel titleLabel = new JLabel("📘 " + course.getTitle());
+        titleLabel.setFont(new Font("SansSerif", Font.BOLD, 14));
+
+        JLabel detailsLabel = new JLabel("👥 " + studentCount + " enrolled | Status: " + course.getApprovalStatus());
+        detailsLabel.setFont(new Font("SansSerif", Font.PLAIN, 12));
+        detailsLabel.setForeground(Color.GRAY);
+
+        infoPanel.add(titleLabel);
+        infoPanel.add(detailsLabel);
+
+        // Buttons panel
+        JPanel buttonsPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 5, 0));
+        buttonsPanel.setOpaque(false);
+
+        // Edit button
+        JButton editButton = new JButton("✏️ Edit");
+        editButton.setBackground(new Color(173, 216, 230));
+        editButton.setOpaque(true);
+        editButton.setBorderPainted(false);
+        editButton.setFocusPainted(false);
+
+        // View Students button
+        JButton studentsButton = new JButton("👥 Students");
+        studentsButton.setBackground(new Color(144, 238, 144));
+        studentsButton.setOpaque(true);
+        studentsButton.setBorderPainted(false);
+        studentsButton.setFocusPainted(false);
+
+        // Delete button
+        JButton deleteButton = new JButton("🗑️ Delete");
+        deleteButton.setBackground(new Color(255, 182, 193));
+        deleteButton.setOpaque(true);
+        deleteButton.setBorderPainted(false);
+        deleteButton.setFocusPainted(false);
+
+        // Add action listeners
+        editButton.addActionListener(e -> {
+            new CourseEditorDialog(this, db, course).setVisible(true);
+            refreshCoursesPanel(); // Refresh after editing
+        });
+
+        studentsButton.addActionListener(e -> {
+            showEnrolledStudents(course);
+        });
+
+        deleteButton.addActionListener(e -> {
+            int confirm = JOptionPane.showConfirmDialog(
+                    this,
+                    "Are you sure you want to delete the course: '" + course.getTitle() + "'?\n",
+                    "Confirm Delete",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE);
+
+            if (confirm == JOptionPane.YES_OPTION) {
+                // Remove from database
+                db.deleteCourse(course.getCourseId());
+
+                // Remove from instructor's created courses
+                instructor.getCreatedCourses().remove(course.getCourseId());
+
+                // Save changes
+                db.save();
+
+                // Refresh the panel
+                refreshCoursesPanel();
+
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Course '" + course.getTitle() + "' has been deleted successfully!"
+                );
+            }
+        });
+
+        buttonsPanel.add(editButton);
+        buttonsPanel.add(studentsButton);
+        buttonsPanel.add(deleteButton);
+
+        rowPanel.add(infoPanel, BorderLayout.CENTER);
+        rowPanel.add(buttonsPanel, BorderLayout.EAST);
+
+        return rowPanel;
+    }
+
+    private void showEnrolledStudents(Course course) {
+        javax.swing.DefaultListModel<String> modelList = new javax.swing.DefaultListModel<>();
+        java.util.LinkedHashSet<String> ids = new java.util.LinkedHashSet<>();
+        if (course.getStudentIds() != null) ids.addAll(course.getStudentIds());
+
+        for (String idOrUsername : ids) {
+            java.util.Optional<User> opt = db.findById(idOrUsername);
+            if (opt.isEmpty()) {
+                opt = db.findByUsername(idOrUsername);
+            }
+
+            if (opt.isPresent() && opt.get() instanceof Student s) {
+                String uname = s.getUsername() != null ? s.getUsername() : "(unknown)";
+                String email = s.getEmail() != null ? s.getEmail() : "(no email)";
+                modelList.addElement(uname + " (" + email + ")");
+            } else {
+                modelList.addElement(idOrUsername + " (email unknown)");
+            }
+        }
+
+        if (modelList.isEmpty()) {
+            modelList.addElement("No enrolled students yet.");
+        }
+
+        javax.swing.JList<String> jList = new javax.swing.JList<>(modelList);
+        jList.setVisibleRowCount(10);
+        javax.swing.JScrollPane scroll = new javax.swing.JScrollPane(jList);
+        scroll.setPreferredSize(new java.awt.Dimension(420, 240));
+
+        JOptionPane.showMessageDialog(
+                this,
+                scroll,
+                "Enrolled students - " + course.getTitle(),
+                JOptionPane.PLAIN_MESSAGE
+        );
+    }
+
+    private List<Course> getInstructorCourses() {
+        List<Course> instructorCourses = new ArrayList<>();
+        for (Course c : db.getAllCourses()) {
+            if (c.getInstructorId().equals(instructor.getUserId())) {
+                instructorCourses.add(c);
+            }
+        }
+        return instructorCourses;
+    }
+
+    private Course showCourseSelectionDialog(List<Course> courses) {
+        if (courses.size() == 1) {
+            return courses.get(0);
+        }
+
+        JComboBox<Course> courseCombo = new JComboBox<>(courses.toArray(new Course[0]));
+        courseCombo.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index,
+                                                          boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof Course) {
+                    setText(((Course) value).getTitle());
+                }
+                return this;
+            }
+        });
+
+        int result = JOptionPane.showConfirmDialog(
+                this,
+                courseCombo,
+                "Select Course for Insights",
+                JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+        );
+
+        if (result == JOptionPane.OK_OPTION) {
+            return (Course) courseCombo.getSelectedItem();
+        }
+        return null;
+    }
+
     private JPanel createBarChart(String title, java.util.Map<String, Double> data) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (var entry : data.entrySet()) {
@@ -238,19 +350,15 @@ public class InstructorDashboardFrame extends JFrame {
                 dataset
         );
 
-        // Customize the chart
         var plot = chart.getCategoryPlot();
         var renderer = (org.jfree.chart.renderer.category.BarRenderer) plot.getRenderer();
+        renderer.setSeriesPaint(0, new Color(137, 207, 240));
 
-        // 1. Set bar color
-        renderer.setSeriesPaint(0, new Color(137, 207, 240)); // Baby blue
-
-        // 2. Adjust bar width
         int itemCount = dataset.getColumnCount();
         if (itemCount == 1) {
-            renderer.setMaximumBarWidth(0.1); // Narrower bar when only one item
+            renderer.setMaximumBarWidth(0.1);
         } else {
-            renderer.setMaximumBarWidth(0.2); // Default width for multiple bars
+            renderer.setMaximumBarWidth(0.2);
         }
 
         return new ChartPanel(chart);
