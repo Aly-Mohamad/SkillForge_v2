@@ -9,8 +9,8 @@ public class Student extends User {
 
     private List<String> enrolledCourseIds;
     private Map<String, LessonProgress> lessonProgressMap;
+    private ArrayList<Certificate> certificateList;
 
-    // No-arg constructor for deserialization
     public Student() {
         super();
         initCollections();
@@ -29,12 +29,7 @@ public class Student extends User {
     private void ensureCollections() {
         if (enrolledCourseIds == null) enrolledCourseIds = new ArrayList<>();
         if (lessonProgressMap == null) lessonProgressMap = new HashMap<>();
-    }
-
-    // Course enrollment
-    public List<String> getCourseIds() {
-        ensureCollections();
-        return enrolledCourseIds;
+        if (certificateList == null) certificateList = new ArrayList<>();
     }
 
     public void enroll(String courseId) {
@@ -44,28 +39,18 @@ public class Student extends User {
         }
     }
 
-    public void unenroll(String courseId) {
-        ensureCollections();
-        enrolledCourseIds.remove(courseId);
-    }
-
     public boolean isEnrolled(String courseId) {
         ensureCollections();
-        if(enrolledCourseIds.contains(courseId)) return false;
-        return enrolledCourseIds.contains(courseId);
+        if(enrolledCourseIds.contains(courseId)) return true;
+        return false;
     }
 
-    public void setEnrolledCourseIds(List<String> courseIds) {
-        enrolledCourseIds = (courseIds != null) ? new ArrayList<>(courseIds) : new ArrayList<>();
-    }
-
-    // Lesson progress tracking
     public void markLessonCompleted(String lessonId, int score, boolean passed) {
         ensureCollections();
         LessonProgress progress = lessonProgressMap.getOrDefault(lessonId, new LessonProgress());
         progress.setScore(score);
         progress.setPassed(passed);
-        progress.setCompleted(passed); // only mark as completed if passed
+        progress.setCompleted(passed);
         progress.incrementTries();
         lessonProgressMap.put(lessonId, progress);
     }
@@ -76,13 +61,12 @@ public class Student extends User {
         return progress != null && progress.isCompleted();
     }
 
-    public LessonProgress getLessonProgress(String lessonId) {
+    public void generateCertificate(Course course) {
         ensureCollections();
-        return lessonProgressMap.getOrDefault(lessonId, new LessonProgress());
+        certificateList.add(new Certificate(getUserId(), course.getCourseId()));
     }
 
-    public Map<String, LessonProgress> getAllLessonProgress() {
-        ensureCollections();
-        return lessonProgressMap;
+    public ArrayList<Certificate> getCertificateList() {
+        return certificateList;
     }
 }

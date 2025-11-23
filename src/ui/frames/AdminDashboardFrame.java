@@ -13,7 +13,6 @@ public class AdminDashboardFrame extends JFrame {
     private JsonDatabaseManager db;
     private Admin admin;
 
-    // Replaced JList with a panel that holds rows
     private JPanel listPanel;
     private JScrollPane listScrollPane;
 
@@ -31,7 +30,6 @@ public class AdminDashboardFrame extends JFrame {
         JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        // Container for course rows
         listPanel = new JPanel();
         listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.Y_AXIS));
         listPanel.setBackground(Color.WHITE);
@@ -39,11 +37,9 @@ public class AdminDashboardFrame extends JFrame {
         listScrollPane = new JScrollPane(listPanel);
         listScrollPane.getVerticalScrollBar().setUnitIncrement(12);
 
-        // Top label
         mainPanel.add(new JLabel("📋 Pending Courses for Approval", SwingConstants.CENTER), BorderLayout.NORTH);
         mainPanel.add(listScrollPane, BorderLayout.CENTER);
 
-        // Logout button 
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JButton logoutButton = new JButton("🚪 Logout");
         bottomPanel.add(logoutButton);
@@ -66,8 +62,6 @@ public class AdminDashboardFrame extends JFrame {
         });
 
         add(mainPanel);
-
-        // load rows
         loadPendingCourses();
     }
 

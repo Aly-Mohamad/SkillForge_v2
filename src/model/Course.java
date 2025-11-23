@@ -1,7 +1,6 @@
 package model;
 
 import com.google.gson.annotations.Expose;
-import model.LessonProgress;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
@@ -13,10 +12,9 @@ public class Course {
     private String description;
     private final String instructorId;
     private List<Lesson> lessons;
-    private List<String> studentIds; // Store student IDs instead of full objects
+    private List<String> studentIds;
     private String approvalStatus;
     private Map<String, List<String>> progress;
-    @Expose
     private Map<String, List<LessonProgress>> lessonProgressMap = new HashMap<>();
 
     public Course(String title, String description, String instructorId) {
@@ -56,9 +54,6 @@ public class Course {
 
     public void setTitle(String title) { this.title = title; }
     public void setDescription(String description) { this.description = description; }
-    public void setLessons(List<Lesson> lessons) { this.lessons = (lessons != null) ? lessons : new ArrayList<>(); }
-    public void setStudentIds(List<String> studentIds) { this.studentIds = (studentIds != null) ? studentIds : new ArrayList<>(); }
-    public void setProgress(Map<String, List<String>> progress) { this.progress = (progress != null) ? progress : new HashMap<>(); }
     public void setApprovalStatus(String approvalStatus) {this.approvalStatus = approvalStatus;}
 
     public void addLesson(Lesson lesson) {
@@ -93,7 +88,6 @@ public class Course {
         return progresses.stream().mapToInt(LessonProgress::getScore).average().orElse(0);
     }
 
-
     public double getCompletionRate(String lessonId, List<Student> enrolledStudents) {
         if (enrolledStudents == null || enrolledStudents.isEmpty()) return 0;
 
@@ -114,13 +108,6 @@ public class Course {
         return getProgress().containsKey(studentId) && getProgress().get(studentId).contains(lessonId);
     }
 
-    public int countCompletedLessons(Student student) {
-        String studentId = student.getUsername();
-        return getProgress().getOrDefault(studentId, new ArrayList<>()).size();
-    }
-
-    // java
-// Only counts lessons that still exist in the course
     public int getCompletionPercentage(Student student) {
         java.util.List<Lesson> lessons = getLessons();
         int total = (lessons == null) ? 0 : lessons.size();
@@ -129,11 +116,9 @@ public class Course {
         int completed = 0;
         for (Lesson l : lessons) {
             String lessonId = l.getLessonId();
-            // Count completion only if this student completes THIS existing lesson
             if (student.hasCompleted(lessonId)) {
                 completed++;
             } else if (isLessonCompleted(student, lessonId)) {
-                // Optional fallback if you track per-course per-student progress
                 completed++;
             }
         }

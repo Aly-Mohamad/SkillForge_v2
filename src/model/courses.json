@@ -13,10 +13,10 @@
         "isCompleted": true,
         "isPassed": true,
         "score": 100,
-        "tries": 2,
+        "tries": 15,
         "quiz": {
           "isPassed": true,
-          "tries": 2,
+          "tries": 15,
           "score": 100,
           "lessonId": "L8848",
           "questions": [
@@ -35,19 +35,97 @@
             }
           ]
         }
+      },
+      {
+        "lessonId": "L3442",
+        "title": "Differentitaon",
+        "content": "",
+        "resources": [],
+        "isCompleted": true,
+        "isPassed": true,
+        "score": 100,
+        "tries": 13,
+        "quiz": {
+          "isPassed": true,
+          "tries": 13,
+          "score": 100,
+          "lessonId": "L3442",
+          "questions": [
+            {
+              "questionId": "Q2218",
+              "answers": [
+                "change",
+                "424",
+                "545565",
+                "65656"
+              ],
+              "correctAnswer": "change",
+              "questionText": "dP/dt",
+              "studentAnswer": "change",
+              "isCorrect": false
+            }
+          ]
+        }
+      },
+      {
+        "lessonId": "L1264",
+        "title": "Graphs",
+        "content": "",
+        "resources": [],
+        "isCompleted": true,
+        "isPassed": true,
+        "score": 100,
+        "tries": 9,
+        "quiz": {
+          "isPassed": true,
+          "tries": 9,
+          "score": 100,
+          "lessonId": "L1264",
+          "questions": [
+            {
+              "questionId": "Q9824",
+              "answers": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ],
+              "correctAnswer": "1",
+              "questionText": "bars1",
+              "studentAnswer": "1",
+              "isCorrect": false
+            }
+          ]
+        }
       }
     ],
     "studentIds": [
       "student",
-      "Sharnouby"
+      "std",
+      "aly",
+      "asser"
     ],
     "approvalStatus": "APPROVED",
     "progress": {
       "student": [
-        "L8848"
+        "L8848",
+        "L3442",
+        "L1264"
       ],
-      "Sharnouby": [
-        "L8848"
+      "std": [
+        "L8848",
+        "L3442",
+        "L1264"
+      ],
+      "aly": [
+        "L8848",
+        "L3442",
+        "L1264"
+      ],
+      "asser": [
+        "L8848",
+        "L3442",
+        "L1264"
       ]
     },
     "lessonProgressMap": {
@@ -60,7 +138,256 @@
           "tries": 0
         },
         {
-          "studentId": "S3943",
+          "studentId": "S3409",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3409",
+          "score": 0,
+          "passed": false,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3409",
+          "score": 0,
+          "passed": false,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3409",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3602",
+          "score": 0,
+          "passed": false,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3602",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3602",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3602",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3602",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3602",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3602",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S6125",
+          "score": 0,
+          "passed": false,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S6125",
+          "score": 0,
+          "passed": false,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S6125",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        }
+      ],
+      "L3442": [
+        {
+          "studentId": "S6129",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3409",
+          "score": 0,
+          "passed": false,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3409",
+          "score": 0,
+          "passed": false,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3409",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3602",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3602",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3602",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3602",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3602",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S6125",
+          "score": 0,
+          "passed": false,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S6125",
+          "score": 0,
+          "passed": false,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S6125",
+          "score": 0,
+          "passed": false,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S6125",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        }
+      ],
+      "L1264": [
+        {
+          "studentId": "S3409",
+          "score": 0,
+          "passed": false,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3409",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3602",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3602",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3602",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3602",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S3602",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S6125",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S6129",
           "score": 100,
           "passed": true,
           "completed": true,
@@ -70,8 +397,8 @@
     }
   },
   {
-    "courseId": "C5311",
-    "title": "Math 1",
+    "courseId": "C4720",
+    "title": "Dynamics",
     "description": "",
     "instructorId": "I8963",
     "lessons": [],

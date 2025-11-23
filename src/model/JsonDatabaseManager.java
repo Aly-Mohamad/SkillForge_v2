@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +20,7 @@ public class JsonDatabaseManager {
     private List<User> users = new ArrayList<User>();
     private List<Course> courses = new ArrayList<Course>();
 
-    private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).setPrettyPrinting().create();
 
     public JsonDatabaseManager() { load(); }
 
@@ -49,7 +50,7 @@ public class JsonDatabaseManager {
                 fr.close();
                 if (loaded != null) {
                     for (Course course : loaded) {
-                        course.ensureProgressMapInitialized(); // ✅ Ensure map is initialized
+                        course.ensureProgressMapInitialized();
                     }
                     courses = loaded;
                 }
@@ -57,7 +58,7 @@ public class JsonDatabaseManager {
         } catch (Exception e) { System.out.println("Could not load courses.json: " + e.getMessage()); }
     }
 
-    public  void save() {
+    public void save() {
         try {
             List<Student> students = new ArrayList<Student>();
             List<Instructor> instructors = new ArrayList<Instructor>();
@@ -132,13 +133,6 @@ public class JsonDatabaseManager {
 
     public List<Course> getAllCourses() {
         return courses;
-    }
-
-    public Optional<Course> getCourseById(String id) {
-        for (Course c : courses) {
-            if (c.getCourseId().equals(id)) return Optional.of(c);
-        }
-        return Optional.empty();
     }
 
     public void updateCourse(Course updated) {

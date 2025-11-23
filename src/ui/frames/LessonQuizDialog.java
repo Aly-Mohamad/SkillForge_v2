@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
-// Change constructor to accept Course so we can update course progress
 public class LessonQuizDialog extends JDialog {
     public LessonQuizDialog(JFrame owner, JsonDatabaseManager db, Student student, Course course, Lesson lesson) {
         super(owner, "Quiz - " + lesson.getTitle(), true);
@@ -110,6 +109,16 @@ public class LessonQuizDialog extends JDialog {
             JOptionPane.showMessageDialog(this,
                     "You scored: " + score + "%\n" +
                             (passed ? "✅ You passed the quiz!" : "❌ You did not pass. Try again later."));
+
+            if (course.getCompletionPercentage(student) == 100){
+                student.generateCertificate(course);
+                db.save();
+                JOptionPane.showMessageDialog(this,
+                        "🎉 Congratulations! You completed the entire course!\n" +
+                                "Your certificate has been generated.");
+            }
+
+
 
             // Add this helper inside LessonQuizDialog and call it after grading:
             showReviewPanel(quiz.getQuestions(), correct, total);

@@ -10,8 +10,28 @@
           "passed": true,
           "completed": true,
           "tries": 1
+        },
+        "L3442": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        },
+        "L1264": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
         }
       },
+      "certificateList": [
+        {
+          "certificateId": "CERT-5934",
+          "studentId": "S6129",
+          "courseId": "C6968",
+          "issueDate": "24-11-2025"
+        }
+      ],
       "userId": "S6129",
       "role": "student",
       "username": "student",
@@ -27,27 +47,128 @@
           "score": 100,
           "passed": true,
           "completed": true,
+          "tries": 4
+        },
+        "L3442": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 3
+        },
+        "L1264": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 2
+        }
+      },
+      "certificateList": [],
+      "userId": "S3409",
+      "role": "student",
+      "username": "std",
+      "email": "std@gmail.com",
+      "password": "a7f5397443359ea76c50be82c77f1f893a060925b51a332cc5da906f83d3344e"
+    },
+    {
+      "enrolledCourseIds": [
+        "C6968"
+      ],
+      "lessonProgressMap": {
+        "L8848": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        },
+        "L3442": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        },
+        "L1264": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
           "tries": 1
         }
       },
-      "userId": "S3943",
+      "certificateList": [
+        {
+          "certificateId": "CERT-2835",
+          "studentId": "S3602",
+          "courseId": "C6968",
+          "issueDate": "22-11-2025"
+        }
+      ],
+      "userId": "S3602",
       "role": "student",
-      "username": "Sharnouby",
-      "email": "sharnouby@gmail.com",
-      "password": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"
+      "username": "aly",
+      "email": "aly@gmail.com",
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+    },
+    {
+      "enrolledCourseIds": [
+        "C6968"
+      ],
+      "lessonProgressMap": {
+        "L8848": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 3
+        },
+        "L3442": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 4
+        },
+        "L1264": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        }
+      },
+      "certificateList": [
+        {
+          "certificateId": "CERT-1435",
+          "studentId": "S6125",
+          "courseId": "C6968",
+          "issueDate": "23-11-2025"
+        }
+      ],
+      "userId": "S6125",
+      "role": "student",
+      "username": "asser",
+      "email": "asser@gmail.com",
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
     }
   ],
   "instructors": [
     {
       "createdCourses": [
         "C6968",
-        "C5311"
+        "C1317",
+        "C4720"
       ],
       "userId": "I8963",
       "role": "instructor",
       "username": "instructor",
       "email": "instructor@gmail.com",
       "password": "cf2eb894cc40f5c6e781910063859278a3b214a3a14fedb9ca336ca39962b856"
+    },
+    {
+      "createdCourses": [
+        "C4720",
+        "C3985"
+      ],
+      "userId": "I5631",
+      "role": "instructor",
+      "username": "ahmed",
+      "email": "ahmed@gmail.com",
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
     }
   ],
   "admins": [
@@ -64,6 +185,20 @@
       "username": "admin2",
       "email": "admin2@gmail.com",
       "password": "1c142b2d01aa34e9a36bde480645a57fd69e14155dacfab5a3f9257b77fdc8d8"
+    },
+    {
+      "userId": "A3119",
+      "role": "admin",
+      "username": "hoda",
+      "email": "hoda@gmail.com",
+      "password": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"
+    },
+    {
+      "userId": "A7738",
+      "role": "admin",
+      "username": "hamada",
+      "email": "hamada@gmail.com",
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
     }
   ]
 }
