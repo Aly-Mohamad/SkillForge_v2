@@ -13,10 +13,10 @@
         "isCompleted": true,
         "isPassed": true,
         "score": 100,
-        "tries": 1,
+        "tries": 2,
         "quiz": {
           "isPassed": true,
-          "tries": 1,
+          "tries": 2,
           "score": 100,
           "lessonId": "L8848",
           "questions": [
@@ -38,11 +38,15 @@
       }
     ],
     "studentIds": [
-      "student"
+      "student",
+      "Sharnouby"
     ],
     "approvalStatus": "APPROVED",
     "progress": {
       "student": [
+        "L8848"
+      ],
+      "Sharnouby": [
         "L8848"
       ]
     },
@@ -54,8 +58,26 @@
           "passed": true,
           "completed": true,
           "tries": 0
+        },
+        {
+          "studentId": "S3943",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
         }
       ]
     }
+  },
+  {
+    "courseId": "C5311",
+    "title": "Math 1",
+    "description": "",
+    "instructorId": "I8963",
+    "lessons": [],
+    "studentIds": [],
+    "approvalStatus": "PENDING",
+    "progress": {},
+    "lessonProgressMap": {}
   }
 ]

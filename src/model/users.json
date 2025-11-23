@@ -17,12 +17,31 @@
       "username": "student",
       "email": "student@gmail.com",
       "password": "264c8c381bf16c982a4e59b0dd4c6f7808c51a05f64c35db42cc78a2a72875bb"
+    },
+    {
+      "enrolledCourseIds": [
+        "C6968"
+      ],
+      "lessonProgressMap": {
+        "L8848": {
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 1
+        }
+      },
+      "userId": "S3943",
+      "role": "student",
+      "username": "Sharnouby",
+      "email": "sharnouby@gmail.com",
+      "password": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"
     }
   ],
   "instructors": [
     {
       "createdCourses": [
-        "C6968"
+        "C6968",
+        "C5311"
       ],
       "userId": "I8963",
       "role": "instructor",
