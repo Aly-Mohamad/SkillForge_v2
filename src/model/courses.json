@@ -13,10 +13,10 @@
         "isCompleted": true,
         "isPassed": true,
         "score": 100,
-        "tries": 12,
+        "tries": 15,
         "quiz": {
           "isPassed": true,
-          "tries": 12,
+          "tries": 15,
           "score": 100,
           "lessonId": "L8848",
           "questions": [
@@ -44,10 +44,10 @@
         "isCompleted": true,
         "isPassed": true,
         "score": 100,
-        "tries": 9,
+        "tries": 13,
         "quiz": {
           "isPassed": true,
-          "tries": 9,
+          "tries": 13,
           "score": 100,
           "lessonId": "L3442",
           "questions": [
@@ -75,10 +75,10 @@
         "isCompleted": true,
         "isPassed": true,
         "score": 100,
-        "tries": 7,
+        "tries": 9,
         "quiz": {
           "isPassed": true,
-          "tries": 7,
+          "tries": 9,
           "score": 100,
           "lessonId": "L1264",
           "questions": [
@@ -102,13 +102,15 @@
     "studentIds": [
       "student",
       "std",
-      "aly"
+      "aly",
+      "asser"
     ],
     "approvalStatus": "APPROVED",
     "progress": {
       "student": [
         "L8848",
-        "L3442"
+        "L3442",
+        "L1264"
       ],
       "std": [
         "L8848",
@@ -116,6 +118,11 @@
         "L1264"
       ],
       "aly": [
+        "L8848",
+        "L3442",
+        "L1264"
+      ],
+      "asser": [
         "L8848",
         "L3442",
         "L1264"
@@ -206,6 +213,27 @@
           "passed": true,
           "completed": true,
           "tries": 0
+        },
+        {
+          "studentId": "S6125",
+          "score": 0,
+          "passed": false,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S6125",
+          "score": 0,
+          "passed": false,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S6125",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
         }
       ],
       "L3442": [
@@ -271,6 +299,34 @@
           "passed": true,
           "completed": true,
           "tries": 0
+        },
+        {
+          "studentId": "S6125",
+          "score": 0,
+          "passed": false,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S6125",
+          "score": 0,
+          "passed": false,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S6125",
+          "score": 0,
+          "passed": false,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S6125",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
         }
       ],
       "L1264": [
@@ -322,25 +378,28 @@
           "passed": true,
           "completed": true,
           "tries": 0
+        },
+        {
+          "studentId": "S6125",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
+        },
+        {
+          "studentId": "S6129",
+          "score": 100,
+          "passed": true,
+          "completed": true,
+          "tries": 0
         }
       ]
     }
   },
   {
-    "courseId": "C0748",
-    "title": "electronics",
-    "description": "diode",
-    "instructorId": "I8963",
-    "lessons": [],
-    "studentIds": [],
-    "approvalStatus": "PENDING",
-    "progress": {},
-    "lessonProgressMap": {}
-  },
-  {
-    "courseId": "C5642",
-    "title": "logic",
-    "description": "logic 1",
+    "courseId": "C4720",
+    "title": "Dynamics",
+    "description": "",
     "instructorId": "I8963",
     "lessons": [],
     "studentIds": [],

@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Question {
     private String questionId;
     private String []answers = new String[4];
@@ -20,11 +18,9 @@ public class Question {
         this.isCorrect = false;
     }
 
-    public String getQuestionId() { return questionId; }
     public String []getAnswers() { return answers; }
     public String getCorrectAnswer() { return correctAnswer; }
     public String getQuestionText() { return questionText; }
-    public String getCourseId() { return courseId; }
     public String getStudentAnswer() { return studentAnswer; }
     public boolean isCorrect() { return isCorrect; }
 

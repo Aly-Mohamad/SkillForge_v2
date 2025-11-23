@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
-// Change constructor to accept Course so we can update course progress
 public class LessonQuizDialog extends JDialog {
     public LessonQuizDialog(JFrame owner, JsonDatabaseManager db, Student student, Course course, Lesson lesson) {
         super(owner, "Quiz - " + lesson.getTitle(), true);
